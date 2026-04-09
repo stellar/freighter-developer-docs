@@ -20,7 +20,7 @@ import {
   getAddress,
   signAuthEntry,
   signTransaction,
-  signBlob,
+  signMessage,
   addToken,
 } from "@stellar/freighter-api";
 ```

@@ -57,7 +57,7 @@ if (result.isAllowed) {
 ```
 
 {% hint style="info" %}
-If the user has already authorized your app, `setAllowed()` resolves immediately with `true`.
+If the user has already authorized your app, `setAllowed()` resolves immediately with `{ isAllowed: true }`.
 {% endhint %}
 
 ## Requesting Access

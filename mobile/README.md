@@ -34,7 +34,7 @@ All error responses use JSON-RPC 2.0 format with code `5000`:
 ```
 
 {% hint style="warning" %}
-Freighter Mobile validates that the `chainId` in the request matches the wallet's active network. If the user is on the wrong network, the request is rejected. Always specify `chainId` in your request params.
+Freighter Mobile validates that the `chainId` in the request matches the wallet's active network. If the user is on the wrong network, the request is rejected. In WalletConnect v2, always specify `chainId` as a top-level field on the request, not inside `params`.
 {% endhint %}
 
 ## Security

@@ -187,13 +187,14 @@ Here's how to construct the preimage from a contract simulation result and attac
 import { xdr, Networks, hash, Keypair } from "@stellar/stellar-sdk";
 
 // 1. Get the SorobanAuthorizationEntry from simulation
+// Assumes `server` (SorobanRpc.Server) and `tx` (Transaction) are already set up
 const simulationResult = await server.simulateTransaction(tx);
 const authEntry = simulationResult.result.auth[0];
 
 // 2. Build the HashIdPreimage
 const preimage = xdr.HashIdPreimage.envelopeTypeSorobanAuthorization(
   new xdr.HashIdPreimageSorobanAuthorization({
-    networkId: hash(Buffer.from(Networks.PUBLIC)),
+    networkId: hash(new TextEncoder().encode(Networks.PUBLIC)),
     nonce: authEntry.credentials().address().nonce(),
     signatureExpirationLedger: authEntry
       .credentials()
@@ -205,8 +206,8 @@ const preimage = xdr.HashIdPreimage.envelopeTypeSorobanAuthorization(
 
 const entryXdr = preimage.toXDR("base64");
 
-// 3. Send via WalletConnect
-const result = await walletKit.request({
+// 3. Send via WalletConnect (using the client from the connecting guide)
+const result = await client.request({
   topic: session.topic,
   chainId: "stellar:pubnet",
   request: {
@@ -217,6 +218,7 @@ const result = await walletKit.request({
 
 // 4. Attach the signature back to the auth entry
 const signerRawKey = Keypair.fromPublicKey(result.signerAddress).rawPublicKey();
+const signatureBytes = Uint8Array.from(atob(result.signedAuthEntry), (c) => c.charCodeAt(0));
 const signatureScVal = xdr.ScVal.scvMap([
   new xdr.ScMapEntry({
     key: xdr.ScVal.scvSymbol("public_key"),
@@ -224,7 +226,7 @@ const signatureScVal = xdr.ScVal.scvMap([
   }),
   new xdr.ScMapEntry({
     key: xdr.ScVal.scvSymbol("signature"),
-    val: xdr.ScVal.scvBytes(Buffer.from(result.signedAuthEntry, "base64")),
+    val: xdr.ScVal.scvBytes(signatureBytes),
   }),
 ]);
 authEntry

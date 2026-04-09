@@ -48,13 +48,13 @@ Use this for plain HTML pages or projects without a build step. The library is l
 Add to your `<head>`:
 
 ```html
-<script src="https://unpkg.com/@stellar/freighter-api/dist/index.min.js"></script>
+<script src="https://unpkg.com/@stellar/freighter-api/build/index.min.js"></script>
 ```
 
 This always loads the latest version automatically. To pin a specific version:
 
 ```html
-<script src="https://unpkg.com/@stellar/freighter-api@6.0.1/dist/index.min.js"></script>
+<script src="https://unpkg.com/@stellar/freighter-api@6.0.1/build/index.min.js"></script>
 ```
 
 Then access the API via `window.freighterApi`:

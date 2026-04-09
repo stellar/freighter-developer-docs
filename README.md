@@ -26,7 +26,7 @@ Connect to Freighter Mobile using the WalletConnect v2 protocol. Best for dapps 
 - Cross-platform apps that support both desktop and mobile wallets
 - Dapps using WalletConnect for multi-wallet support
 
-> Get started with the [Mobile Integration Guide](mobile/)
+> Get started with the [Mobile Integration Guide](mobile/README.md)
 
 ## Quick links
 

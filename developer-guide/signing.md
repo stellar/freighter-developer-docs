@@ -27,7 +27,7 @@ The private key is cached for **5 minutes** after the user enters their password
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `xdr` | `string` | **Required.** Base64-encoded transaction XDR. |
-| `opts.network` | `string` | Network name (maps to `Networks` enum in `js-stellar-sdk`). |
+| `opts.network` | `string` | Network name (maps to `Networks` enum in `@stellar/stellar-sdk`). |
 | `opts.networkPassphrase` | `string` | Custom passphrase. Ignored if `network` is also provided. |
 | `opts.address` | `string` | Request a specific account's signature. Freighter will switch to that account if available. |
 
@@ -65,7 +65,7 @@ signAuthEntry(entryXdr: string, opts: {
 }) -> Promise<{ signedAuthEntry: string | null; signerAddress: string } & { error?: string }>
 ```
 
-See the [`authorizeEntry` helper](https://github.com/stellar/js-stellar-base/blob/e3d6fc3351e7d242b374c7c6057668366364a279/src/auth.js#L97) in `js-stellar-base` for how signed auth entries are used, or the [Soroban Development](soroban-development.md) page for wallet-side patterns.
+See the [`authorizeEntry` helper](https://github.com/stellar/js-stellar-base/blob/e3d6fc3351e7d242b374c7c6057668366364a279/src/auth.js#L97) in `js-stellar-base` for how signed auth entries are used, or the [Soroban development documentation](https://developers.stellar.org/docs/smart-contracts) for wallet-side patterns.
 
 ### Example
 
@@ -118,7 +118,7 @@ A complete flow from connection to Horizon submission:
 
 ```typescript
 import { isConnected, requestAccess, signTransaction } from "@stellar/freighter-api";
-import { Server, TransactionBuilder } from "stellar-sdk";
+import { Server, TransactionBuilder } from "@stellar/stellar-sdk";
 
 // 1. Check Freighter is installed
 const connectResult = await isConnected();
