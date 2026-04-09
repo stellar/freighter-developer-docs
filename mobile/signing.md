@@ -147,7 +147,7 @@ Sign a Soroban authorization entry preimage for multi-auth and custom-account sm
 Your dapp constructs the `HashIdPreimage` (network ID + nonce + expiry + invocation), and Freighter hashes it with SHA-256 and signs the digest.
 
 {% hint style="warning" %}
-Freighter Mobile performs a **Blockaid site scan** before showing the signing sheet. Review the contract address, function name, and subinvocations displayed in the UI before confirming.
+Freighter Mobile performs a **Blockaid site scan** during the initial WalletConnect session connection — no additional scan runs at auth-entry signing time. Review the contract address, function name, and subinvocations displayed in the UI before confirming.
 {% endhint %}
 
 **Parameters**
@@ -239,7 +239,7 @@ authEntry
 
 | Condition | Error message |
 | --- | --- |
-| Missing or whitespace-only `entryXdr` | `"Invalid authorization entry"` |
+| Missing, non-string, or whitespace-only `entryXdr` | `"Invalid authorization entry"` |
 | XDR parse failure | `"Failed to process auth entry"` |
 | `networkId` doesn't match active network | `"Authorization entry is for a different network"` |
 | User rejected | `"User rejected the request"` |
