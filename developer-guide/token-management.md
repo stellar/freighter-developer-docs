@@ -10,7 +10,7 @@ Trigger an "add token" flow that displays token details in a modal for the user 
 
 ```
 addToken({ contractId: string, networkPassphrase?: string })
-  -> Promise<{ contractId: string } & { error?: string }>
+  -> Promise<{ contractId: string } & { error?: FreighterApiError }>
 ```
 
 When called, Freighter loads the token's **symbol**, **name**, **decimals**, and **balance** from the contract and displays them for the user to verify before adding.
@@ -36,7 +36,7 @@ const result = await addToken({
 });
 
 if (result.error) {
-  console.error(result.error);
+  console.error(result.error.message);
 } else {
   console.log(`Token added: ${result.contractId}`);
 }

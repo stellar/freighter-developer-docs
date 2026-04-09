@@ -8,7 +8,7 @@ Detect whether a user has Freighter installed, check if your app is authorized, 
 
 Check if the user has Freighter installed in their browser.
 
-**Returns:** `Promise<{ isConnected: boolean } & { error?: string }>`
+**Returns:** `Promise<{ isConnected: boolean } & { error?: FreighterApiError }>`
 
 ```typescript
 import { isConnected } from "@stellar/freighter-api";
@@ -26,7 +26,7 @@ if (result.isConnected) {
 
 Check if the user has previously authorized your app to receive data from Freighter.
 
-**Returns:** `Promise<{ isAllowed: boolean } & { error?: string }>`
+**Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
 ```typescript
 import { isAllowed } from "@stellar/freighter-api";
@@ -44,7 +44,7 @@ if (result.isAllowed) {
 
 Prompt the user to add your app to Freighter's **Allow List**. Once approved, the extension can provide user data without additional prompts.
 
-**Returns:** `Promise<{ isAllowed: boolean } & { error?: string }>`
+**Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
 ```typescript
 import { setAllowed } from "@stellar/freighter-api";
@@ -66,7 +66,7 @@ If the user has already authorized your app, `setAllowed()` resolves immediately
 
 Prompt the user for permission to access their public key. This is the **recommended** way to initiate a connection with Freighter — it handles both authorization and key retrieval in one call.
 
-**Returns:** `Promise<{ address: string } & { error?: string }>`
+**Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
 If the user has previously authorized your app, the public key is returned immediately without a popup.
 
@@ -82,7 +82,7 @@ if (!connectResult.isConnected) {
 
 const accessResult = await requestAccess();
 if (accessResult.error) {
-  console.error("Access denied:", accessResult.error);
+  console.error("Access denied:", accessResult.error.message);
 } else {
   console.log("Public key:", accessResult.address);
 }

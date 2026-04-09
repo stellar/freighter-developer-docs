@@ -25,6 +25,18 @@ import {
 } from "@stellar/freighter-api";
 ```
 
+## Error Type
+
+All methods return an optional `error` field of type `FreighterApiError`:
+
+```typescript
+interface FreighterApiError {
+  code: number;
+  message: string;
+  ext?: string[];
+}
+```
+
 ## API Reference
 
 | Category | Description |

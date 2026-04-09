@@ -12,7 +12,7 @@ These methods require that the user has previously authorized your app via [`req
 
 A lightweight way to retrieve the user's public key. Unlike `requestAccess()`, this will **not** prompt the user — it returns an empty string if the app isn't authorized or Freighter isn't connected.
 
-**Returns:** `Promise<{ address: string } & { error?: string }>`
+**Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
 ```typescript
 import { getAddress } from "@stellar/freighter-api";
@@ -32,7 +32,7 @@ if (error) {
 
 Get the name and passphrase of the network the user has selected in Freighter.
 
-**Returns:** `Promise<{ network: string; networkPassphrase: string } & { error?: string }>`
+**Returns:** `Promise<{ network: string; networkPassphrase: string } & { error?: FreighterApiError }>`
 
 Possible `network` values: `PUBLIC`, `TESTNET`, `FUTURENET`, or `STANDALONE` (custom networks).
 
@@ -51,7 +51,7 @@ if (!error) {
 
 Get comprehensive network configuration including the Horizon URL, passphrase, and Soroban RPC URL.
 
-**Returns:** `Promise<{ network: string; networkUrl: string; networkPassphrase: string; sorobanRpcUrl?: string } & { error?: string }>`
+**Returns:** `Promise<{ network: string; networkUrl: string; networkPassphrase: string; sorobanRpcUrl?: string } & { error?: FreighterApiError }>`
 
 ```typescript
 import { getNetworkDetails } from "@stellar/freighter-api";

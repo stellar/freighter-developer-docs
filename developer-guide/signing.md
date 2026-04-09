@@ -13,7 +13,7 @@ signTransaction(xdr: string, opts?: {
   network?: string,
   networkPassphrase?: string,
   address?: string
-}) -> Promise<{ signedTxXdr: string; signerAddress: string } & { error?: string }>
+}) -> Promise<{ signedTxXdr: string; signerAddress: string } & { error?: FreighterApiError }>
 ```
 
 The user will be prompted to enter their password (if the extension doesn't currently hold the private key) and then review the transaction details before signing.
@@ -46,7 +46,7 @@ const { signedTxXdr, signerAddress, error } = await signTransaction(xdr, {
 });
 
 if (error) {
-  console.error("Signing failed:", error);
+  console.error("Signing failed:", error.message);
 } else {
   console.log("Signed by:", signerAddress);
   console.log("Signed XDR:", signedTxXdr);
@@ -62,7 +62,7 @@ Sign a Soroban [authorization entry preimage](https://github.com/stellar/js-stel
 ```
 signAuthEntry(entryXdr: string, opts: {
   address: string
-}) -> Promise<{ signedAuthEntry: string | null; signerAddress: string } & { error?: string }>
+}) -> Promise<{ signedAuthEntry: string | null; signerAddress: string } & { error?: FreighterApiError }>
 ```
 
 See the [`authorizeEntry` helper](https://github.com/stellar/js-stellar-base/blob/e3d6fc3351e7d242b374c7c6057668366364a279/src/auth.js#L97) in `js-stellar-base` for how signed auth entries are used, or the [Soroban development documentation](https://developers.stellar.org/docs/smart-contracts) for wallet-side patterns.
@@ -77,7 +77,7 @@ const { signedAuthEntry, signerAddress, error } = await signAuthEntry(entryXdr, 
 });
 
 if (error) {
-  console.error("Auth entry signing failed:", error);
+  console.error("Auth entry signing failed:", error.message);
 } else {
   console.log("Signed auth entry:", signedAuthEntry);
 }
@@ -92,7 +92,7 @@ Sign an arbitrary string and receive a base64-encoded Ed25519 signature. Follows
 ```
 signMessage(message: string, opts: {
   address: string
-}) -> Promise<{ signedMessage: string | null; signerAddress: string } & { error?: string }>
+}) -> Promise<{ signedMessage: string | null; signerAddress: string } & { error?: FreighterApiError }>
 ```
 
 ### Example
@@ -106,7 +106,7 @@ const { signedMessage, signerAddress, error } = await signMessage(
 );
 
 if (error) {
-  console.error("Message signing failed:", error);
+  console.error("Message signing failed:", error.message);
 } else {
   console.log("Signature:", signedMessage);
 }
@@ -129,7 +129,7 @@ if (!connectResult.isConnected) {
 // 2. Request the user's public key
 const accessResult = await requestAccess();
 if (accessResult.error) {
-  throw new Error(accessResult.error);
+  throw new Error(accessResult.error.message);
 }
 
 // 3. Sign the transaction
@@ -139,7 +139,7 @@ const signResult = await signTransaction(xdr, {
   address: accessResult.address,
 });
 if (signResult.error) {
-  throw new Error(signResult.error);
+  throw new Error(signResult.error.message);
 }
 
 // 4. Submit to Horizon
