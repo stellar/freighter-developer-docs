@@ -28,31 +28,13 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 
 **Desktop and mobile.** Browser extension for desktop, WalletConnect for mobile. Both paths produce the same signed output, so your dapp supports both with minimal branching.
 
-## Choose Your Integration
+## Get Started
 
-### Extension
+**Desktop** — integrate with the Freighter browser extension using `@stellar/freighter-api`. See the [Extension Guide](extension/installation.md).
 
-Integrate with Freighter's browser extension using `@stellar/freighter-api`. Best for web apps that run in desktop browsers.
+**Mobile** — connect to Freighter Mobile over WalletConnect v2. See the [Mobile Guide](mobile/README.md).
 
-**Ideal for:**
-
-- React, Vue, or Angular web apps
-- Server-rendered apps (Next.js, Nuxt)
-- Static sites via CDN
-
-> Get started with the [Extension Installation Guide](extension/installation.md)
-
-### Mobile (WalletConnect)
-
-Connect to Freighter Mobile using the WalletConnect v2 protocol. Best for dapps that need to support mobile users.
-
-**Ideal for:**
-
-- Mobile-first dapps
-- Cross-platform apps that support both desktop and mobile wallets
-- Dapps using WalletConnect for multi-wallet support
-
-> Get started with the [Mobile Integration Guide](mobile/README.md)
+If your dapp needs to support both, start with the extension guide and add WalletConnect as a fallback for mobile users.
 
 ## Quick links
 
