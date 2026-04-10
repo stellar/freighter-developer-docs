@@ -48,14 +48,6 @@ Freighter Mobile uses **Blockaid** scanning to protect users:
 
 `stellar_signMessage` and `stellar_signAuthEntry` do not trigger additional scans — the site was already scanned during connection.
 
-## Supporting Both Extension and Mobile
-
-If your dapp needs to support both desktop (extension) and mobile users, the typical pattern is:
-
-1. **Detect the environment** — check if `window.freighterApi` is available for extension, otherwise offer WalletConnect
-2. **Use WalletConnect as the fallback** — mobile users scan a QR code; desktop users without the extension can use the WalletConnect modal
-3. **Unify your signing interface** — both paths produce the same output (signed XDR), so your submission logic stays the same
-
 ## See also
 
 - [WalletConnect v2 Docs](https://docs.walletconnect.com/)

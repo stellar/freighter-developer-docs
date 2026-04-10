@@ -34,7 +34,7 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 
 **Mobile** — connect to Freighter Mobile over WalletConnect v2. See the [Mobile Guide](mobile/README.md).
 
-If your dapp needs to support both, start with the extension guide and add WalletConnect as a fallback for mobile users.
+**Both** — if your dapp needs to support desktop and mobile users, use both integration paths. Both produce the same output (signed XDR), so your submission logic stays the same regardless of how the user connected.
 
 ## Quick links
 
