@@ -14,11 +14,35 @@
       loadSidebar: 'SUMMARY.md',
       subMaxLevel: 2,
       auto2top: true,
+      executeScript: true,
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/dist/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://unpkg.com/@stellar/freighter-api/build/index.min.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <style>
+    .playground-btn {
+      background: #6c5ce7; color: #fff; border: none; padding: 8px 16px;
+      border-radius: 4px; cursor: pointer; font-size: 14px; margin: 8px 0;
+    }
+    .playground-btn:hover { background: #5b4bd5; }
+    .playground-btn:disabled { background: #999; cursor: not-allowed; }
+    .playground-input {
+      width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;
+      font-family: monospace; font-size: 13px; margin: 4px 0 8px 0; box-sizing: border-box;
+    }
+    .playground-result {
+      background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 4px;
+      padding: 12px; font-family: monospace; font-size: 13px; white-space: pre-wrap;
+      word-break: break-all; margin: 8px 0; min-height: 20px;
+    }
+    .playground-result.error { border-color: #e74c3c; color: #e74c3c; }
+    .playground-result.success { border-color: #27ae60; }
+    .playground-label { font-weight: bold; margin-top: 12px; display: block; }
+  </style>
 </body>
 </html>

@@ -62,6 +62,7 @@ Connect to Freighter Mobile using the WalletConnect v2 protocol. Best for dapps 
 | Connect to Freighter                  | [Connecting](developer-guide/connecting.md)        | [Connecting](mobile/connecting.md)                   |
 | Sign a transaction                    | [Signing](developer-guide/signing.md)              | [Signing](mobile/signing.md)                         |
 | Add a token                           | [Token Management](developer-guide/token-management.md) | —                                               |
+| Try it out                            | [Extension Playground](playground/README.md)       | [Mobile Playground](mobile/playground/README.md)     |
 
 ## Resources
 
