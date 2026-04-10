@@ -4,27 +4,6 @@ Integrate Freighter into your web application using `@stellar/freighter-api`. Th
 
 `@stellar/freighter-api` adheres to the [SEP-43](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0043.md) standard for wallet interfaces on Stellar, and also offers additional methods beyond the spec such as `getNetworkDetails`, `addToken`, and `WatchWalletChanges`.
 
-## Importing
-
-Import the entire library:
-
-```javascript
-import freighterApi from "@stellar/freighter-api";
-```
-
-Or import only what you need:
-
-```javascript
-import {
-  isConnected,
-  getAddress,
-  signAuthEntry,
-  signTransaction,
-  signMessage,
-  addToken,
-} from "@stellar/freighter-api";
-```
-
 ## Error Type
 
 All methods return an optional `error` field of type `FreighterApiError`:
