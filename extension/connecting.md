@@ -21,7 +21,7 @@ if (result.isConnected) {
 ```
 
 {% hint style="info" %}
-`isConnected()` can also be used to detect if a user is on desktop or mobile — if it returns `false`, the user is likely on a mobile device and you should use WalletConnect instead.
+`isConnected()` checks whether the Freighter extension is installed. Note that it returns `false` for any user without the extension — not just mobile users. To detect Freighter Mobile's in-app browser specifically, check for `window.stellar?.platform === "mobile"`.
 {% endhint %}
 
 ## Checking Authorization

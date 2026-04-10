@@ -277,7 +277,7 @@ const client = await SignClient.init({
 const { uri, approval } = await client.connect({
   requiredNamespaces: {
     stellar: {
-      methods: ["stellar_signXDR", "stellar_signAndSubmitXDR"],
+      methods: ["stellar_signXDR", "stellar_signAndSubmitXDR", "stellar_signMessage", "stellar_signAuthEntry"],
       chains: ["stellar:pubnet"],
       events: ["accountsChanged"],
     },
