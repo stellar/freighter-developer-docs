@@ -44,5 +44,5 @@ interface FreighterApiError {
 | [Connecting](connecting.md) | Detect Freighter, check permissions, request access |
 | [Reading Data](reading-data.md) | Get the user's address and network configuration |
 | [Signing](signing.md) | Sign transactions, auth entries, and messages |
-| [Token Management](token-management.md) | Add Soroban tokens to the user's wallet |
+| [Token Management](token-management.md) | Add contract tokens to the user's wallet |
 | [Watching Changes](watching-changes.md) | Monitor wallet state changes in real time |

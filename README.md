@@ -24,7 +24,7 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 
 **Built and maintained by SDF.** Freighter is developed by the Stellar Development Foundation, the same team behind the core Stellar protocol and SDKs.
 
-**Complete Stellar support.** Transaction signing, Soroban authorization entry signing with contract invocation inspection, SEP-53 message signing, custom token management, and Blockaid transaction scanning.
+**Complete Stellar support.** Transaction signing, Soroban authorization entry signing with contract invocation inspection, SEP-53 message signing, contract token management, and Blockaid transaction scanning.
 
 **Desktop and mobile.** Browser extension for desktop, WalletConnect for mobile. Both paths produce the same signed output, so your dapp supports both with minimal branching.
 
