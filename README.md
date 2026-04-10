@@ -14,7 +14,7 @@ The integration model is simple: your dapp talks to the wallet, and the wallet t
 
 For **desktop browsers**, you integrate with the Freighter extension through a lightweight JavaScript library. It injects itself into the page, and your dapp calls methods like "is the wallet connected?", "what's the user's address?", and "please sign this transaction."
 
-For **mobile**, the integration works over WalletConnect v2. Your dapp generates a connection URI, the user scans a QR code with Freighter Mobile, and a secure relay session is established. From that point on, signing requests flow through the same pattern — your dapp proposes, the user reviews and approves in the wallet.
+For **mobile**, the integration works over WalletConnect v2. When a user opens your dapp in a mobile browser, WalletConnect presents a panel where they select Freighter as their wallet and approve the connection. On desktop, the same flow can display a QR code for the user to scan. Either way, a secure relay session is established and signing requests flow through the same pattern — your dapp proposes, the user reviews and approves in the wallet.
 
 Both paths produce the same output: signed transactions you can submit to the Stellar network. So your backend and submission logic stay the same regardless of whether your user connected from a laptop or a phone.
 
