@@ -22,9 +22,11 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 
 ## Why Freighter
 
-**You ship faster.** The API surface is small and intentional. Connecting a wallet, signing a transaction, and reading account data each take one function call. There's no complex state machine to manage, no WebSocket lifecycle to babysit, and no cryptography to implement yourself.
+**Built and maintained by SDF.** Freighter is developed by the Stellar Development Foundation, the same team behind the core Stellar protocol and SDKs.
 
-**It works where your users are.** Desktop users get the browser extension experience they're used to from other ecosystems. Mobile users get QR-code-based WalletConnect flows that feel native. You can support both from the same dapp with minimal branching.
+**Complete Stellar support.** Transaction signing, Soroban authorization entry signing with contract invocation inspection, SEP-53 message signing, custom token management, and Blockaid transaction scanning.
+
+**Desktop and mobile.** Browser extension for desktop, WalletConnect for mobile. Both paths produce the same signed output, so your dapp supports both with minimal branching.
 
 ## Choose Your Integration
 
