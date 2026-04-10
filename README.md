@@ -1,6 +1,32 @@
 # Welcome to Freighter
 
-Freighter is a non-custodial wallet for the Stellar network. It lets you manage accounts, sign transactions, and interact with Soroban smart contracts from both the browser extension and the mobile app.
+Freighter is a non-custodial wallet for the Stellar network, available as a browser extension and a mobile app. This guide will walk you through integrating Freighter into your dapp so your users can connect their wallets, sign transactions, and interact with Soroban smart contracts — all without you ever touching a private key.
+
+## What You Can Build
+
+With Freighter, your dapp can connect a user's wallet with a single call — no signup form, no password, just a familiar wallet popup and an immediate public key. From there you can read their active network, hand off transactions for signing, and submit to the network. The user reviews everything in the wallet's own UI and stays in full control.
+
+For Soroban dapps, Freighter also handles authorization entry signing for smart contract calls and arbitrary message signing for account verification.
+
+## How It Works
+
+The integration model is simple: your dapp talks to the wallet, and the wallet talks to the user. You never handle private keys, seed phrases, or encryption. Freighter manages all of that on the user's device.
+
+For **desktop browsers**, you integrate with the Freighter extension through a lightweight JavaScript library. It injects itself into the page, and your dapp calls methods like "is the wallet connected?", "what's the user's address?", and "please sign this transaction." Every sensitive action goes through the extension's UI where the user has full visibility and control.
+
+For **mobile**, the integration works over WalletConnect v2. Your dapp generates a connection URI, the user scans a QR code with Freighter Mobile, and a secure relay session is established. From that point on, signing requests flow through the same pattern — your dapp proposes, the user reviews and approves in the wallet.
+
+Both paths produce the same output: signed transactions you can submit to the Stellar network. So your backend and submission logic stay the same regardless of whether your user connected from a laptop or a phone.
+
+If you want to support multiple Stellar wallets — not just Freighter — take a look at [Stellar Wallets Kit](https://stellarwalletskit.dev/). It provides a unified interface across Stellar wallets so your users can connect with whichever wallet they prefer.
+
+## Why Freighter
+
+**Your users stay in control.** Every transaction, every signature, every connection is explicitly approved by the user in the wallet's own interface. There's no ambient access, no silent signing, and no stored sessions that persist beyond what the user expects.
+
+**You ship faster.** The API surface is small and intentional. Connecting a wallet, signing a transaction, and reading account data each take one function call. There's no complex state machine to manage, no WebSocket lifecycle to babysit, and no cryptography to implement yourself.
+
+**It works where your users are.** Desktop users get the browser extension experience they're used to from other ecosystems. Mobile users get QR-code-based WalletConnect flows that feel native. You can support both from the same dapp with minimal branching.
 
 ## Choose Your Integration
 
