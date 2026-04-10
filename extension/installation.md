@@ -33,7 +33,7 @@ Then import in your code:
 import { isConnected, requestAccess, signTransaction } from "@stellar/freighter-api";
 ```
 
-> See the [Developer Guide](../developer-guide/) for the full API reference.
+> See the [Developer Guide](../extension/) for the full API reference.
 
 ### CDN (script tag)
 
@@ -67,6 +67,6 @@ const { address } = await window.freighterApi.requestAccess();
 
 | I want to...                          | Go to                                                    |
 | ------------------------------------- | -------------------------------------------------------- |
-| Connect my app to Freighter           | [Connecting](../developer-guide/connecting.md)           |
-| Sign a transaction                    | [Signing](../developer-guide/signing.md)                 |
-| Add a token                           | [Token Management](../developer-guide/token-management.md) |
+| Connect my app to Freighter           | [Connecting](../extension/connecting.md)           |
+| Sign a transaction                    | [Signing](../extension/signing.md)                 |
+| Add a token                           | [Token Management](../extension/token-management.md) |

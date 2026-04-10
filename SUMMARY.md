@@ -4,13 +4,13 @@
 
 ## Extension
 
-* [Installation](developer-guide/installation.md)
-* [Overview](developer-guide/README.md)
-* [Connecting](developer-guide/connecting.md)
-* [Reading Data](developer-guide/reading-data.md)
-* [Signing](developer-guide/signing.md)
-* [Token Management](developer-guide/token-management.md)
-* [Watching Changes](developer-guide/watching-changes.md)
+* [Installation](extension/installation.md)
+* [Overview](extension/README.md)
+* [Connecting](extension/connecting.md)
+* [Reading Data](extension/reading-data.md)
+* [Signing](extension/signing.md)
+* [Token Management](extension/token-management.md)
+* [Watching Changes](extension/watching-changes.md)
 
 ## Mobile (WalletConnect)
 

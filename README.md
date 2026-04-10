@@ -40,7 +40,7 @@ Integrate with Freighter's browser extension using `@stellar/freighter-api`. Bes
 - Server-rendered apps (Next.js, Nuxt)
 - Static sites via CDN
 
-> Get started with the [Extension Installation Guide](developer-guide/installation.md)
+> Get started with the [Extension Installation Guide](extension/installation.md)
 
 ### Mobile (WalletConnect)
 
@@ -58,10 +58,10 @@ Connect to Freighter Mobile using the WalletConnect v2 protocol. Best for dapps 
 
 | I want to...                          | Extension                                          | Mobile                                               |
 | ------------------------------------- | -------------------------------------------------- | ---------------------------------------------------- |
-| Install / set up                      | [Installation](developer-guide/installation.md)    | [Installation](mobile/installation.md)               |
-| Connect to Freighter                  | [Connecting](developer-guide/connecting.md)        | [Connecting](mobile/connecting.md)                   |
-| Sign a transaction                    | [Signing](developer-guide/signing.md)              | [Signing](mobile/signing.md)                         |
-| Add a token                           | [Token Management](developer-guide/token-management.md) | —                                               |
+| Install / set up                      | [Installation](extension/installation.md)    | [Installation](mobile/installation.md)               |
+| Connect to Freighter                  | [Connecting](extension/connecting.md)        | [Connecting](mobile/connecting.md)                   |
+| Sign a transaction                    | [Signing](extension/signing.md)              | [Signing](mobile/signing.md)                         |
+| Add a token                           | [Token Management](extension/token-management.md) | —                                               |
 
 ## Resources
 
