@@ -6,7 +6,7 @@ Freighter is a non-custodial wallet for the Stellar network, available as a brow
 
 With Freighter, your dapp can connect a user's wallet with a single call — no signup form, no password, just a familiar wallet popup and an immediate public key. From there you can read their active network, hand off transactions for signing, and submit to the network. The user reviews everything in the wallet's own UI and stays in full control.
 
-For Soroban dapps, Freighter also handles authorization entry signing for smart contract calls and arbitrary message signing for account verification.
+For dapps that integrate with smart contracts, Freighter also handles authorization entry signing for smart contract calls and arbitrary message signing for account verification.
 
 ## How It Works
 
