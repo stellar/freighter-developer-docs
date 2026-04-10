@@ -57,7 +57,7 @@ if (error) {
 
 ### `signAuthEntry()`
 
-Sign a Soroban [authorization entry preimage](https://github.com/stellar/js-stellar-base/blob/a9567e5843760bfb6a8b786592046aee4c9d38b2/types/next.d.ts#L6895) and receive the signed hash back as a base64 string. Used for [Soroban contract authorization](https://developers.stellar.org/docs/smart-contracts/guides/auth/authorization) flows.
+Sign an [authorization entry preimage](https://github.com/stellar/js-stellar-base/blob/a9567e5843760bfb6a8b786592046aee4c9d38b2/types/next.d.ts#L6895) and receive the signed hash back as a base64 string. Used for [Soroban contract authorization](https://developers.stellar.org/docs/smart-contracts/guides/auth/authorization) flows.
 
 ```
 signAuthEntry(entryXdr: string, opts: {
