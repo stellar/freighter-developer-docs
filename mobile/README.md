@@ -6,7 +6,7 @@ Connect your dapp to Freighter Mobile using the [WalletConnect v2](https://docs.
 
 | Network | Chain ID |
 | --- | --- |
-| Mainnet | `stellar:pubnet` |
+| Mainnet (PUBLIC) | `stellar:pubnet` |
 | Testnet | `stellar:testnet` |
 
 ## API Reference
@@ -16,7 +16,7 @@ Connect your dapp to Freighter Mobile using the [WalletConnect v2](https://docs.
 | [`stellar_signXDR`](signing.md#stellar_signxdr) | Sign a transaction and return the signed XDR |
 | [`stellar_signAndSubmitXDR`](signing.md#stellar_signandsubmitxdr) | Sign and submit a transaction to Horizon |
 | [`stellar_signMessage`](signing.md#stellar_signmessage) | Sign an arbitrary UTF-8 message ([SEP-53](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0053.md)) |
-| [`stellar_signAuthEntry`](signing.md#stellar_signauthentry) | Sign a Soroban authorization entry preimage ([SEP-43](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0043.md)) |
+| [`stellar_signAuthEntry`](signing.md#stellar_signauthentry) | Sign a Soroban authorization entry preimage (as defined in [SEP-43](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0043.md)) |
 
 ## Error Handling
 

@@ -25,7 +25,7 @@ import SignClient from "@walletconnect/sign-client";
 const client = await SignClient.init({
   projectId: "YOUR_PROJECT_ID",
   metadata: {
-    name: "My Stellar dApp",
+    name: "My Stellar Dapp",
     description: "A dapp that integrates with Freighter Mobile",
     url: "https://my-dapp.com",
     icons: ["https://my-dapp.com/icon.png"],

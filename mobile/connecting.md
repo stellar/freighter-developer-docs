@@ -1,4 +1,4 @@
-# Connecting
+# Connecting to Freighter Mobile
 
 Establish a WalletConnect session with Freighter Mobile, handle session lifecycle events, and disconnect.
 

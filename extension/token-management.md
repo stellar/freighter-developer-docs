@@ -20,7 +20,7 @@ When called, Freighter loads the token's **symbol**, **name**, **decimals**, and
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `contractId` | `string` | **Required.** The contract token ID (`C...` address). |
-| `networkPassphrase` | `string` | Defaults to Pubnet's passphrase if omitted. |
+| `networkPassphrase` | `string` | Defaults to Mainnet passphrase if omitted. |
 
 ### Example
 

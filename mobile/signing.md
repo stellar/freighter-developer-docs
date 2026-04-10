@@ -2,6 +2,10 @@
 
 Sign transactions, messages, and Soroban authorization entries via WalletConnect.
 
+{% hint style="info" %}
+The WalletConnect RPC methods use different response field names than the extension API. For example, `stellar_signXDR` returns `signedXDR` while the extension's `signTransaction()` returns `signedTxXdr`. See the response tables below for each method's exact fields.
+{% endhint %}
+
 ## Signing a Transaction
 
 ### `stellar_signXDR`
@@ -243,3 +247,64 @@ authEntry
 | XDR parse failure | `"Failed to process auth entry"` |
 | `networkId` doesn't match active network | `"Authorization entry is for a different network"` |
 | User rejected | `"User rejected the request"` |
+
+## Full Example: Connect, Sign, and Submit
+
+A complete flow from connection to transaction signing. This handles both the **in-app browser** scenario (user opens your dapp inside Freighter Mobile) and the **external browser** scenario (user visits your dapp in a regular browser).
+
+```typescript
+import SignClient from "@walletconnect/sign-client";
+
+// 1. Detect if we're inside Freighter Mobile's in-app browser.
+//    When Freighter Mobile opens a dapp in its built-in browser,
+//    it injects a global object to identify itself.
+const isFreighterInAppBrowser =
+  window.stellar?.provider === "freighter" &&
+  window.stellar?.platform === "mobile";
+
+// 2. Initialize WalletConnect client
+const client = await SignClient.init({
+  projectId: "YOUR_PROJECT_ID",
+  metadata: {
+    name: "My Stellar Dapp",
+    description: "A dapp that integrates with Freighter Mobile",
+    url: "https://my-dapp.com",
+    icons: ["https://my-dapp.com/icon.png"],
+  },
+});
+
+// 3. Create session
+const { uri, approval } = await client.connect({
+  requiredNamespaces: {
+    stellar: {
+      methods: ["stellar_signXDR", "stellar_signAndSubmitXDR"],
+      chains: ["stellar:pubnet"],
+      events: ["accountsChanged"],
+    },
+  },
+});
+
+if (isFreighterInAppBrowser) {
+  // In-app browser: the wallet is the browser host, so the session
+  // is approved automatically — no QR code or modal needed.
+} else {
+  // External browser: display `uri` as a QR code for the user to
+  // scan, or pass it to a WalletConnect modal.
+  console.log("Scan this URI:", uri);
+}
+
+const session = await approval();
+
+// 4. Sign a transaction
+const xdr = "AAAAAgAAAAA..."; // your assembled transaction XDR
+const result = await client.request({
+  topic: session.topic,
+  chainId: "stellar:pubnet",
+  request: {
+    method: "stellar_signXDR",
+    params: { xdr },
+  },
+});
+
+console.log("Signed XDR:", result.signedXDR);
+```

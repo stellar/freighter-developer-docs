@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 
-## Extension
+## Extension (freighter-api)
 
 * [Installation](extension/installation.md)
 * [Overview](extension/README.md)
