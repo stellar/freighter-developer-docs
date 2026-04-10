@@ -42,7 +42,7 @@ if (result.isAllowed) {
 
 ### `setAllowed()`
 
-Prompt the user to add your app to Freighter's **Allow List**. Once approved, the extension can provide user data without additional prompts.
+Prompt the user to authorize your app and add it to Freighter's **Allow List**. Once approved, the extension can provide user data without additional prompts.
 
 **Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
@@ -64,7 +64,7 @@ If the user has already authorized your app, `setAllowed()` resolves immediately
 
 ### `requestAccess()`
 
-Prompt the user for permission to access their public key. This is the **recommended** way to initiate a connection with Freighter — it handles both authorization and key retrieval in one call.
+Prompt the user for permission to access their public key. Like `setAllowed()`, this handles authorization — but also returns the public key in one call.
 
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
