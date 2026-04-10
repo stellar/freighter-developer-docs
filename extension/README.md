@@ -1,4 +1,4 @@
-# Developer Guide
+# Extension Integration
 
 Integrate Freighter into your web application using `@stellar/freighter-api`. This library lets you send and receive data from a user's Freighter extension.
 
