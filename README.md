@@ -18,7 +18,7 @@ For **mobile**, the integration works over WalletConnect v2. Your dapp generates
 
 Both paths produce the same output: signed transactions you can submit to the Stellar network. So your backend and submission logic stay the same regardless of whether your user connected from a laptop or a phone.
 
-If you want to support multiple Stellar wallets — not just Freighter — take a look at [Stellar Wallets Kit](https://stellarwalletskit.dev/). It provides a unified interface across Stellar wallets so your users can connect with whichever wallet they prefer.
+If you want to support multiple Stellar wallets — not just Freighter — take a look at [Stellar Wallets Kit](https://stellarwalletskit.dev/). It provides a unified interface across Stellar desktop wallets so your users can connect with whichever browser extension they prefer. Note that it currently supports desktop wallets only, not mobile.
 
 ## Why Freighter
 
