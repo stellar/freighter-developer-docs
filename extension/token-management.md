@@ -1,6 +1,6 @@
 # Token Management
 
-Add Soroban tokens to a user's Freighter wallet programmatically.
+Add Soroban tokens to a user's Freighter wallet programmatically. This lets your dapp prompt users to track a token directly — without the user having to find and add the contract address in Freighter manually.
 
 ## Adding a Token
 
