@@ -241,10 +241,14 @@ A complete flow from connection to transaction signing. When a user opens your d
 
 ```typescript
 import UniversalProvider from "@walletconnect/universal-provider";
+import { createAppKit } from "@reown/appkit/core";
+import { mainnet } from "@reown/appkit/networks";
 
-// 1. Initialize WalletConnect provider
+const projectId = "YOUR_PROJECT_ID";
+
+// 1. Initialize provider and modal
 const provider = await UniversalProvider.init({
-  projectId: "YOUR_PROJECT_ID",
+  projectId,
   metadata: {
     name: "My Stellar Dapp",
     description: "A dapp that integrates with Freighter Mobile",
@@ -253,10 +257,15 @@ const provider = await UniversalProvider.init({
   },
 });
 
-// 2. Listen for URI
+const modal = createAppKit({
+  projectId,
+  networks: [mainnet],
+  manualWCControl: true,
+});
+
+// 2. Open the modal when the pairing URI is ready
 provider.on("display_uri", (uri) => {
-  // Display `uri` as a QR code or pass to a WalletConnect modal
-  console.log("Scan this URI:", uri);
+  modal.open({ uri });
 });
 
 // 3. Connect
@@ -269,6 +278,8 @@ const session = await provider.connect({
     },
   },
 });
+
+modal.close();
 
 // 4. Sign a transaction
 const xdr = "AAAAAgAAAAA..."; // your assembled transaction XDR
