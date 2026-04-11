@@ -10,19 +10,19 @@ Get up and running with WalletConnect so your dapp can connect to Freighter Mobi
 ## npm / yarn
 
 ```bash
-npm install @walletconnect/sign-client @walletconnect/types
+npm install @walletconnect/universal-provider
 ```
 
 ```bash
-yarn add @walletconnect/sign-client @walletconnect/types
+yarn add @walletconnect/universal-provider
 ```
 
-Then initialize the client:
+Then initialize the provider:
 
 ```typescript
-import SignClient from "@walletconnect/sign-client";
+import UniversalProvider from "@walletconnect/universal-provider";
 
-const client = await SignClient.init({
+const provider = await UniversalProvider.init({
   projectId: "YOUR_PROJECT_ID",
   metadata: {
     name: "My Stellar Dapp",
@@ -39,3 +39,11 @@ const client = await SignClient.init({
 | ------------------------------------- | ---------------------------------------------- |
 | Connect to Freighter Mobile           | [Connecting](connecting.md)                    |
 | Sign a transaction                    | [Signing](signing.md)                          |
+
+## Alternatives
+
+[Stellar Wallets Kit](https://stellarwalletskit.dev/) provides a multi-wallet interface that includes WalletConnect support, but currently only supports `stellar_signXDR` and `stellar_signAndSubmitXDR`. To use all four Freighter Mobile methods — including `stellar_signMessage` and `stellar_signAuthEntry` — implement the WalletConnect integration directly as shown in this guide.
+
+{% hint style="info" %}
+Older examples may use `@walletconnect/sign-client` directly. That approach still works, but `@walletconnect/universal-provider` is the actively documented package — see the [Reown docs](https://docs.reown.com/advanced/providers/universal).
+{% endhint %}
