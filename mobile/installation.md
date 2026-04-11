@@ -20,7 +20,7 @@ yarn add @walletconnect/universal-provider @reown/appkit
 Then initialize the provider and modal:
 
 ```typescript
-import UniversalProvider from "@walletconnect/universal-provider";
+import { UniversalProvider } from "@walletconnect/universal-provider";
 import { createAppKit } from "@reown/appkit/core";
 import { mainnet } from "@reown/appkit/networks";
 
@@ -37,7 +37,10 @@ const provider = await UniversalProvider.init({
   },
 });
 
-// Modal — displays the QR code and wallet list
+// Modal — displays the QR code and wallet list.
+// AppKit requires at least one network. Stellar is not built-in,
+// so we pass a placeholder. With manualWCControl the modal won't
+// use it for chain switching.
 const modal = createAppKit({
   projectId,
   networks: [mainnet],

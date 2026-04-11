@@ -2,6 +2,8 @@
 
 Sign transactions, messages, and Soroban authorization entries via WalletConnect.
 
+Assumes `provider` and `modal` are initialized as shown in [Installation](installation.md).
+
 {% hint style="info" %}
 The WalletConnect RPC methods use different response field names than the extension API. For example, `stellar_signXDR` returns `signedXDR` while the extension's `signTransaction()` returns `signedTxXdr`. See the response tables below for each method's exact fields.
 {% endhint %}
@@ -240,7 +242,7 @@ authEntry
 A complete flow from connection to transaction signing. The AppKit modal displays both a QR code and a list of wallets. When a user opens your dapp in Freighter Mobile's in-app browser, they select Freighter from the wallet list to deep-link into the connection approval — no QR code scanning needed. From an external browser, the user scans the QR code with their phone instead.
 
 ```typescript
-import UniversalProvider from "@walletconnect/universal-provider";
+import { UniversalProvider } from "@walletconnect/universal-provider";
 import { createAppKit } from "@reown/appkit/core";
 import { mainnet } from "@reown/appkit/networks";
 
@@ -257,6 +259,9 @@ const provider = await UniversalProvider.init({
   },
 });
 
+// AppKit requires at least one network. Stellar is not built-in,
+// so we pass a placeholder. With manualWCControl the modal won't
+// use it for chain switching.
 const modal = createAppKit({
   projectId,
   networks: [mainnet],
@@ -264,12 +269,9 @@ const modal = createAppKit({
   manualWCControl: true,
 });
 
-// 2. Open the modal when the pairing URI is ready
-provider.on("display_uri", (uri) => {
-  modal.open({ uri });
-});
+// 2. Open the modal and connect
+modal.open();
 
-// 3. Connect
 const session = await provider.connect({
   requiredNamespaces: {
     stellar: {
@@ -280,9 +282,13 @@ const session = await provider.connect({
   },
 });
 
+if (!session) {
+  throw new Error("Connection failed");
+}
+
 modal.close();
 
-// 4. Sign a transaction
+// 3. Sign a transaction
 const xdr = "AAAAAgAAAAA..."; // your assembled transaction XDR
 const result = await provider.request(
   {

@@ -2,15 +2,15 @@
 
 Establish a WalletConnect session with Freighter Mobile, handle session lifecycle events, and disconnect.
 
+Assumes `provider` and `modal` are initialized as shown in [Installation](installation.md).
+
 ## Creating a Session
 
-Register a `display_uri` listener before calling `connect()`. The provider emits a pairing URI — pass it to the AppKit modal so the user can scan a QR code or select a wallet for deep-linking. `connect()` resolves once the wallet approves.
+Call `modal.open()` to show the wallet selection modal, then `provider.connect()` to start the pairing. The modal displays a QR code and a list of wallets — when the user selects Freighter or scans the QR code, the connection is established automatically. `connect()` resolves once the wallet approves.
 
 ```typescript
-// When the provider generates a pairing URI, open the modal
-provider.on("display_uri", (uri) => {
-  modal.open({ uri });
-});
+// Open the modal (shows a spinner, then the QR code and wallet list)
+modal.open();
 
 // Connect — resolves when the wallet approves
 const session = await provider.connect({
@@ -27,6 +27,10 @@ const session = await provider.connect({
     },
   },
 });
+
+if (!session) {
+  throw new Error("Connection failed");
+}
 
 modal.close();
 console.log("Connected! Session topic:", session.topic);
