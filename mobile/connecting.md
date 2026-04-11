@@ -4,10 +4,17 @@ Establish a WalletConnect session with Freighter Mobile, handle session lifecycl
 
 ## Creating a Session
 
-Request a connection with the Stellar namespace. This generates a URI you can display as a QR code or use as a deep link for mobile users.
+Register a `display_uri` listener before calling `connect()`. The provider emits the URI for you to display as a QR code or use as a deep link. `connect()` itself resolves once the wallet approves.
 
 ```typescript
-const { uri, approval } = await client.connect({
+// Listen for the URI to display to the user
+provider.on("display_uri", (uri) => {
+  // Display `uri` as a QR code or pass to a WalletConnect modal
+  console.log("Scan this URI:", uri);
+});
+
+// Connect — resolves when the wallet approves
+const session = await provider.connect({
   requiredNamespaces: {
     stellar: {
       methods: [
@@ -22,12 +29,15 @@ const { uri, approval } = await client.connect({
   },
 });
 
-// Display `uri` as a QR code for the user to scan with Freighter Mobile
-console.log("Scan this URI:", uri);
-
-// Wait for the user to approve in Freighter Mobile
-const session = await approval();
 console.log("Connected! Session topic:", session.topic);
+```
+
+The connected session is also accessible at any time via `provider.session`.
+
+Accounts are stored in `session.namespaces.stellar.accounts` as `"stellar:pubnet:G..."` strings — split on `:` to extract the public key:
+
+```typescript
+const publicKey = session.namespaces.stellar.accounts[0].split(":")[2];
 ```
 
 {% hint style="info" %}
@@ -40,12 +50,12 @@ Listen for session lifecycle events to keep your UI in sync:
 
 ```typescript
 // Session was disconnected by the wallet
-client.on("session_delete", ({ topic }) => {
+provider.on("session_delete", ({ topic }) => {
   console.log("Session deleted:", topic);
 });
 
 // Session expired
-client.on("session_expire", ({ topic }) => {
+provider.on("session_expire", ({ topic }) => {
   console.log("Session expired:", topic);
 });
 ```
@@ -55,13 +65,7 @@ client.on("session_expire", ({ topic }) => {
 When the user wants to disconnect:
 
 ```typescript
-await client.disconnect({
-  topic: session.topic,
-  reason: {
-    code: 6000,
-    message: "User disconnected",
-  },
-});
+await provider.disconnect();
 ```
 
 ## Next steps
