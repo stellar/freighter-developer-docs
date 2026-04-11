@@ -237,19 +237,12 @@ authEntry
 
 ## Full Example: Connect, Sign, and Submit
 
-A complete flow from connection to transaction signing. This handles both the **in-app browser** scenario (user opens your dapp inside Freighter Mobile) and the **external browser** scenario (user visits your dapp in a regular browser).
+A complete flow from connection to transaction signing. When a user opens your dapp in Freighter Mobile's in-app browser, they select Freighter from a list of wallets to approve the connection — no QR code scanning needed. From an external browser, the user scans a QR code with their phone instead.
 
 ```typescript
 import UniversalProvider from "@walletconnect/universal-provider";
 
-// 1. Detect if we're inside Freighter Mobile's in-app browser.
-//    When Freighter Mobile opens a dapp in its built-in browser,
-//    it injects a global object to identify itself.
-const isFreighterInAppBrowser =
-  window.stellar?.provider === "freighter" &&
-  window.stellar?.platform === "mobile";
-
-// 2. Initialize WalletConnect provider
+// 1. Initialize WalletConnect provider
 const provider = await UniversalProvider.init({
   projectId: "YOUR_PROJECT_ID",
   metadata: {
@@ -260,19 +253,13 @@ const provider = await UniversalProvider.init({
   },
 });
 
-// 3. Listen for URI (for QR code / deep link display)
+// 2. Listen for URI
 provider.on("display_uri", (uri) => {
-  if (isFreighterInAppBrowser) {
-    // In-app browser: the wallet is the browser host, so the session
-    // is approved automatically — no QR code or modal needed.
-  } else {
-    // External browser: display `uri` as a QR code for the user to
-    // scan, or pass it to a WalletConnect modal.
-    console.log("Scan this URI:", uri);
-  }
+  // Display `uri` as a QR code or pass to a WalletConnect modal
+  console.log("Scan this URI:", uri);
 });
 
-// 4. Connect
+// 3. Connect
 const session = await provider.connect({
   requiredNamespaces: {
     stellar: {
@@ -283,7 +270,7 @@ const session = await provider.connect({
   },
 });
 
-// 5. Sign a transaction
+// 4. Sign a transaction
 const xdr = "AAAAAgAAAAA..."; // your assembled transaction XDR
 const result = await provider.request(
   {
