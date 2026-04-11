@@ -4,7 +4,7 @@ Establish a WalletConnect session with Freighter Mobile, handle session lifecycl
 
 ## Creating a Session
 
-Register a `display_uri` listener before calling `connect()`. The provider emits a pairing URI — pass it to the AppKit modal so the user can scan a QR code or select a wallet. `connect()` resolves once the wallet approves.
+Register a `display_uri` listener before calling `connect()`. The provider emits a pairing URI — pass it to the AppKit modal so the user can scan a QR code or select a wallet for deep-linking. `connect()` resolves once the wallet approves.
 
 ```typescript
 // When the provider generates a pairing URI, open the modal
