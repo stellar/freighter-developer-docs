@@ -41,6 +41,7 @@ const provider = await UniversalProvider.init({
 const modal = createAppKit({
   projectId,
   networks: [mainnet],
+  universalProvider: provider,
   manualWCControl: true,
 });
 ```
