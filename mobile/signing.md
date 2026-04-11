@@ -237,7 +237,7 @@ authEntry
 
 ## Full Example: Connect, Sign, and Submit
 
-A complete flow from connection to transaction signing. When a user opens your dapp in Freighter Mobile's in-app browser, they select Freighter from a list of wallets to approve the connection — no QR code scanning needed. From an external browser, the user scans a QR code with their phone instead.
+A complete flow from connection to transaction signing. The AppKit modal displays both a QR code and a list of wallets. When a user opens your dapp in Freighter Mobile's in-app browser, they select Freighter from the wallet list to deep-link into the connection approval — no QR code scanning needed. From an external browser, the user scans the QR code with their phone instead.
 
 ```typescript
 import UniversalProvider from "@walletconnect/universal-provider";
