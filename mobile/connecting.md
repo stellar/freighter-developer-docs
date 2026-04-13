@@ -2,13 +2,19 @@
 
 Establish a WalletConnect session with Freighter Mobile, handle session lifecycle events, and disconnect.
 
+Assumes `provider` and `modal` are initialized as shown in [Installation](installation.md).
+
 ## Creating a Session
 
-Request a connection with the Stellar namespace. This generates a URI you can display as a QR code or use as a deep link for mobile users.
+Call `modal.open()` to show the wallet selection modal, then `provider.connect()` to start the pairing. The modal displays a QR code and a list of wallets — when the user selects Freighter or scans the QR code, the connection is established automatically. `connect()` resolves once the wallet approves.
 
 ```typescript
-const { uri, approval } = await client.connect({
-  requiredNamespaces: {
+// Open the modal (shows a spinner, then the QR code and wallet list)
+modal.open();
+
+// Connect — resolves when the wallet approves
+const session = await provider.connect({
+  namespaces: {
     stellar: {
       methods: [
         "stellar_signXDR",
@@ -22,16 +28,33 @@ const { uri, approval } = await client.connect({
   },
 });
 
-// Display `uri` as a QR code for the user to scan with Freighter Mobile
-console.log("Scan this URI:", uri);
+if (!session) {
+  throw new Error("Connection failed");
+}
 
-// Wait for the user to approve in Freighter Mobile
-const session = await approval();
+modal.close();
 console.log("Connected! Session topic:", session.topic);
 ```
 
+The connected session is also accessible at any time via `provider.session`.
+
+Accounts are stored in `session.namespaces.stellar.accounts` as `"stellar:pubnet:G..."` strings — split on `:` to extract the public key:
+
+```typescript
+const publicKey = session.namespaces.stellar.accounts[0].split(":")[2];
+```
+
 {% hint style="info" %}
-Use `requiredNamespaces` for methods your dapp needs to function. Use `optionalNamespaces` for methods that enhance the experience but aren't essential.
+Use `namespaces` for methods your dapp needs to function. Use `optionalNamespaces` for methods that enhance the experience but aren't essential.
+
+**Note:** `UniversalProvider` treats `namespaces` as optional at the protocol level on the first connection. After the wallet approves, the approved namespaces are persisted and become required on subsequent connections. To be safe, always verify the approved methods after connecting:
+
+```typescript
+const methods = session.namespaces.stellar?.methods || [];
+if (!methods.includes("stellar_signXDR")) {
+  throw new Error("Wallet does not support required methods");
+}
+```
 {% endhint %}
 
 ## Handling Events
@@ -40,12 +63,12 @@ Listen for session lifecycle events to keep your UI in sync:
 
 ```typescript
 // Session was disconnected by the wallet
-client.on("session_delete", ({ topic }) => {
+provider.on("session_delete", ({ topic }) => {
   console.log("Session deleted:", topic);
 });
 
 // Session expired
-client.on("session_expire", ({ topic }) => {
+provider.on("session_expire", ({ topic }) => {
   console.log("Session expired:", topic);
 });
 ```
@@ -55,13 +78,7 @@ client.on("session_expire", ({ topic }) => {
 When the user wants to disconnect:
 
 ```typescript
-await client.disconnect({
-  topic: session.topic,
-  reason: {
-    code: 6000,
-    message: "User disconnected",
-  },
-});
+await provider.disconnect();
 ```
 
 ## Next steps
