@@ -273,7 +273,7 @@ const modal = createAppKit({
 modal.open();
 
 const session = await provider.connect({
-  requiredNamespaces: {
+  namespaces: {
     stellar: {
       methods: ["stellar_signXDR", "stellar_signAndSubmitXDR", "stellar_signMessage", "stellar_signAuthEntry"],
       chains: ["stellar:pubnet"],

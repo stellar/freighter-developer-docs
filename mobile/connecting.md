@@ -14,7 +14,7 @@ modal.open();
 
 // Connect — resolves when the wallet approves
 const session = await provider.connect({
-  requiredNamespaces: {
+  namespaces: {
     stellar: {
       methods: [
         "stellar_signXDR",
@@ -45,7 +45,16 @@ const publicKey = session.namespaces.stellar.accounts[0].split(":")[2];
 ```
 
 {% hint style="info" %}
-Use `requiredNamespaces` for methods your dapp needs to function. Use `optionalNamespaces` for methods that enhance the experience but aren't essential.
+Use `namespaces` for methods your dapp needs to function. Use `optionalNamespaces` for methods that enhance the experience but aren't essential.
+
+**Note:** `UniversalProvider` treats `namespaces` as optional at the protocol level on the first connection. After the wallet approves, the approved namespaces are persisted and become required on subsequent connections. To be safe, always verify the approved methods after connecting:
+
+```typescript
+const methods = session.namespaces.stellar?.methods || [];
+if (!methods.includes("stellar_signXDR")) {
+  throw new Error("Wallet does not support required methods");
+}
+```
 {% endhint %}
 
 ## Handling Events
