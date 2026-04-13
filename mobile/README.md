@@ -1,6 +1,6 @@
 # Mobile Integration
 
-Connect your dapp to Freighter Mobile using the [WalletConnect v2](https://docs.walletconnect.com/) protocol. All methods follow the standard JSON-RPC 2.0 request/response format over a WalletConnect session.
+Connect your dapp to Freighter Mobile using the [WalletConnect v2](https://docs.walletconnect.network/app-sdk/overview) protocol. All methods follow the standard JSON-RPC 2.0 request/response format over a WalletConnect session.
 
 ## Supported Chains
 
@@ -50,7 +50,7 @@ Freighter Mobile uses **Blockaid** scanning to protect users:
 
 ## See also
 
-- [WalletConnect v2 Docs](https://docs.walletconnect.com/)
+- [WalletConnect v2 Docs](https://docs.walletconnect.network/app-sdk/overview)
 - [Stellar Smart Contracts Auth](https://developers.stellar.org/docs/smart-contracts/guides/auth/authorization)
 - [SEP-53: Message Signing](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0053.md)
 - [SEP-43: Auth Entry Signing](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0043.md)
