@@ -68,7 +68,7 @@ If the user has already authorized your app, `setAllowed()` resolves immediately
 
 ### `requestAccess()`
 
-Prompt the user for permission to access their public key. Like `setAllowed()`, this handles authorization — but also returns the public key in one call.
+Prompt the user to add your dapp to Freighter's Allow List and return their public key in one call. This is the recommended way to connect — it combines authorization and data retrieval in a single step.
 
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 

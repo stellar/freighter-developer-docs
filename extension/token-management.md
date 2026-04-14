@@ -2,6 +2,10 @@
 
 Unlike Stellar assets, contract tokens a user owns are not automatically displayed in Freighter — they must be explicitly added. This method lets your dapp prompt users to add a contract token directly, without the user having to find and add it in Freighter manually.
 
+{% hint style="info" %}
+In a future release, Freighter will auto-detect token transfers and display them automatically. Once that ships, `addToken()` will become a no-op.
+{% endhint %}
+
 ## Adding a Token
 
 ### `addToken()`

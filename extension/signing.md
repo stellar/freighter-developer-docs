@@ -16,11 +16,7 @@ signTransaction(xdr: string, opts?: {
 }) -> Promise<{ signedTxXdr: string; signerAddress: string } & { error?: FreighterApiError }>
 ```
 
-The user will be prompted to enter their password (if the extension doesn't currently hold the private key) and then review the transaction details before signing.
-
-{% hint style="warning" %}
-The private key is cached for **5 minutes** after the user enters their password. The transaction must be reviewed and accepted within that window.
-{% endhint %}
+The user will review the transaction details before signing.
 
 **Parameters**
 
