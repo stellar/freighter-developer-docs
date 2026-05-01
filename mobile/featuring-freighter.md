@@ -51,8 +51,8 @@ const wc = new WalletConnectModule({
     featuredWalletIds: [
       "997a355c8f682468706a76cff1b004a7115f505fb962dac54b6e9b442dd1c380", // Freighter
     ],
-  } as any,
+  } as unknown as ConstructorParameters<typeof WalletConnectModule>[0]["appKitOptions"],
 });
 ```
 
-The cast is needed because `appKitOptions` is typed as the full `CreateAppKit` shape, but the kit only forwards a subset of those options to the underlying modal.
+The cast is needed because `appKitOptions` is typed as the full `CreateAppKit` shape, but the kit only forwards a subset of those options to the underlying modal — so passing just `featuredWalletIds` is correct at runtime but doesn't satisfy the static type. Prefer the narrow `as unknown as ConstructorParameters<...>` cast over `as any`: the runtime behavior is identical, but the assertion stays scoped to this property value rather than erasing type-checking everywhere `appKitOptions` is consumed.
