@@ -13,7 +13,7 @@ This is the **public** identifier of Freighter's listing in the [WalletConnect C
 The Explorer ID can change if Freighter's listing is rotated (e.g. after a security key rotation on our end). If Freighter ever stops appearing in the featured row, look up the current ID using one of the following:
 
 - **UI:** Open [WalletGuide](https://walletguide.walletconnect.network/) → search "Freighter" → click the card → copy the `Wallet ID` field from the detail view.
-- **API:** `curl "https://explorer-api.walletconnect.com/v3/wallets?projectId=<your-wc-project-id>&search=freighter"` and read `id` from the Freighter entry in the response.
+- **API:** `curl "https://explorer-api.walletconnect.com/v3/wallets?projectId=<your-wc-project-id>&search=freighter"` and read `id` from the Freighter entry in the response. Use your own WalletConnect **Project ID** here — the one you got from the [WalletConnect Dashboard](https://dashboard.walletconnect.com/) during [Installation](installation.md). The `projectId` param is just used for rate-limiting and must be a valid registered project ID, but it does not filter results — every valid project ID returns the same global wallet directory, so Freighter will appear in the response regardless of which valid ID you use.
 
 ## Option A — Direct WalletConnect / Reown integration
 
