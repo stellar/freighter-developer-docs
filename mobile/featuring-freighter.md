@@ -1,6 +1,6 @@
 # Featuring Freighter
 
-When a user opens the WalletConnect / Reown modal in your dapp, wallets in the **featured row** are shown first — most users pick from there without scrolling. If your dapp is built for Stellar, featuring Freighter makes it discoverable upfront and improves conversion for Stellar users.
+When a user opens the WalletConnect / Reown modal in your dapp, wallets in the **featured row** are shown first — most users pick from there without scrolling or using the search bar. If your dapp is built for Stellar, featuring Freighter makes it discoverable upfront and improves conversion for Stellar users.
 
 ## Freighter's WalletConnect Explorer ID
 
