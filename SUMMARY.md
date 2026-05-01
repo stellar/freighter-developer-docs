@@ -18,6 +18,7 @@
 * [Overview](mobile/README.md)
 * [Connecting](mobile/connecting.md)
 * [Signing](mobile/signing.md)
+* [Featuring Freighter](mobile/featuring-freighter.md)
 
 ## Integrations
 

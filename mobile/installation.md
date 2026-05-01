@@ -55,6 +55,7 @@ const modal = createAppKit({
 | ------------------------------------- | ---------------------------------------------- |
 | Connect to Freighter Mobile           | [Connecting](connecting.md)                    |
 | Sign a transaction                    | [Signing](signing.md)                          |
+| Feature Freighter upfront in the modal | [Featuring Freighter](featuring-freighter.md) |
 
 ## Alternatives
 
