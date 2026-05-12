@@ -2,6 +2,8 @@
 
 Establish a WalletConnect v2 session with Freighter Mobile.
 
+This playground uses the same `@walletconnect/universal-provider` + `@reown/appkit` stack documented in [Installation](mobile/installation.md). Clicking **Connect** opens the WalletConnect modal — it shows a QR for desktop and a wallet list with one-tap deep-links on mobile.
+
 <span class="playground-label">WalletConnect Project ID:</span>
 <input class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Cloud project ID" />
 
@@ -17,20 +19,12 @@ Establish a WalletConnect v2 session with Freighter Mobile.
 <span class="playground-label">Status:</span>
 <div class="playground-result" id="wc-status">Not connected</div>
 
-<span class="playground-label">QR Code:</span>
-<div id="wc-qr" style="margin: 8px 0; text-align: center;"></div>
-
-<span class="playground-label">URI (copy to Freighter Mobile):</span>
-<div class="playground-result" id="wc-uri" style="user-select: all;"></div>
-
 <span class="playground-label">Session:</span>
 <div class="playground-result" id="wc-session"></div>
 
 <script>
 document.getElementById('btn-wc-connect').addEventListener('click', async function() {
   var statusEl = document.getElementById('wc-status');
-  var qrEl = document.getElementById('wc-qr');
-  var uriEl = document.getElementById('wc-uri');
   var sessionEl = document.getElementById('wc-session');
   var connectBtn = document.getElementById('btn-wc-connect');
   var disconnectBtn = document.getElementById('btn-wc-disconnect');
@@ -46,16 +40,17 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
 
   statusEl.className = 'playground-result';
   statusEl.textContent = 'Loading WalletConnect SDK...';
-  qrEl.innerHTML = '';
-  uriEl.textContent = '';
   sessionEl.textContent = '';
 
-  try {
-    var mod = await import('https://esm.sh/@walletconnect/sign-client@2');
-    var SignClient = mod.default || mod.SignClient;
+  var modal = null;
 
-    statusEl.textContent = 'Initializing client...';
-    var client = await SignClient.init({
+  try {
+    var providerMod = await import('https://esm.sh/@walletconnect/universal-provider@2');
+    var appkitMod = await import('https://esm.sh/@reown/appkit/core');
+    var networksMod = await import('https://esm.sh/@reown/appkit/networks');
+
+    statusEl.textContent = 'Initializing provider...';
+    var provider = await providerMod.UniversalProvider.init({
       projectId: projectId,
       metadata: {
         name: 'Freighter Docs Playground',
@@ -65,11 +60,32 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
       }
     });
 
-    window._wcClient = client;
-    statusEl.textContent = 'Creating session...';
+    // AppKit requires at least one network. Stellar is not built-in,
+    // so we pass mainnet as a placeholder — manualWCControl tells
+    // AppKit not to use it for chain switching; the modal is just
+    // a UI shell over the URI emitted by UniversalProvider.
+    //
+    // featuredWalletIds surfaces Freighter at the top of the modal
+    // regardless of the EVM-shaped network filter — see the
+    // "Featuring Freighter" doc for how to look up / rotate this id.
+    modal = appkitMod.createAppKit({
+      projectId: projectId,
+      networks: [networksMod.mainnet],
+      universalProvider: provider,
+      manualWCControl: true,
+      featuredWalletIds: [
+        '997a355c8f682468706a76cff1b004a7115f505fb962dac54b6e9b442dd1c380', // Freighter
+      ],
+    });
 
-    var connectResult = await client.connect({
-      requiredNamespaces: {
+    window._wcProvider = provider;
+    window._wcModal = modal;
+    statusEl.textContent = 'Opening WalletConnect modal...';
+
+    modal.open();
+
+    var session = await provider.connect({
+      namespaces: {
         stellar: {
           methods: [
             'stellar_signXDR',
@@ -83,43 +99,36 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
       }
     });
 
-    var uri = connectResult.uri;
-    var approval = connectResult.approval;
+    modal.close();
 
-    uriEl.textContent = uri;
-
-    if (typeof qrcode === 'function') {
-      var qr = qrcode(0, 'M');
-      qr.addData(uri);
-      qr.make();
-      qrEl.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 4 });
+    if (!session) {
+      throw new Error('Connection cancelled');
     }
 
-    statusEl.className = 'playground-result';
-    statusEl.textContent = 'Scan the QR code with Freighter Mobile...';
-
-    var session = await approval();
     window._wcSession = session;
     window._wcChainId = chainId;
-
-    qrEl.innerHTML = '';
-    uriEl.textContent = '';
-    statusEl.className = 'playground-result success';
-    statusEl.textContent = 'Connected!';
-    sessionEl.className = 'playground-result success';
+    // The other playground pages call window._wcClient.request(...).
+    // UniversalProvider wraps a sign-client and exposes it at .client,
+    // so other pages keep working without changes.
+    window._wcClient = provider.client;
 
     var accounts = session.namespaces.stellar ? session.namespaces.stellar.accounts : [];
+    sessionEl.className = 'playground-result success';
     sessionEl.textContent = JSON.stringify({
       topic: session.topic,
       accounts: accounts,
       methods: session.namespaces.stellar ? session.namespaces.stellar.methods : []
     }, null, 2);
 
+    statusEl.className = 'playground-result success';
+    statusEl.textContent = 'Connected!';
+
     connectBtn.disabled = true;
     disconnectBtn.disabled = false;
 
-    client.on('session_delete', function() {
+    provider.on('session_delete', function() {
       window._wcSession = null;
+      window._wcClient = null;
       statusEl.className = 'playground-result';
       statusEl.textContent = 'Session disconnected by wallet';
       sessionEl.textContent = '';
@@ -128,8 +137,9 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
     });
 
   } catch (e) {
+    if (modal) { try { modal.close(); } catch (_) {} }
     statusEl.className = 'playground-result error';
-    statusEl.textContent = 'Error: ' + e.message;
+    statusEl.textContent = 'Error: ' + (e.message || String(e));
   }
 });
 
@@ -138,13 +148,11 @@ document.getElementById('btn-wc-disconnect').addEventListener('click', async fun
   var sessionEl = document.getElementById('wc-session');
 
   try {
-    if (window._wcClient && window._wcSession) {
-      await window._wcClient.disconnect({
-        topic: window._wcSession.topic,
-        reason: { code: 6000, message: 'User disconnected' }
-      });
+    if (window._wcProvider) {
+      await window._wcProvider.disconnect();
     }
     window._wcSession = null;
+    window._wcClient = null;
     statusEl.className = 'playground-result';
     statusEl.textContent = 'Disconnected';
     sessionEl.textContent = '';
@@ -152,7 +160,7 @@ document.getElementById('btn-wc-disconnect').addEventListener('click', async fun
     document.getElementById('btn-wc-disconnect').disabled = true;
   } catch (e) {
     statusEl.className = 'playground-result error';
-    statusEl.textContent = 'Error: ' + e.message;
+    statusEl.textContent = 'Error: ' + (e.message || String(e));
   }
 });
 </script>
