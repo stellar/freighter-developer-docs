@@ -5,7 +5,10 @@ Establish a WalletConnect v2 session with Freighter Mobile.
 This playground uses the same `@walletconnect/universal-provider` + `@reown/appkit` stack documented in [Installation](mobile/installation.md). Clicking **Connect** opens the WalletConnect modal — it shows a QR for desktop and a wallet list with one-tap deep-links on mobile.
 
 <span class="playground-label">WalletConnect Project ID:</span>
-<input class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Cloud project ID" />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Cloud project ID" style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-project-id" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <span class="playground-label">Chain:</span>
 <select class="playground-input" id="wc-chain">
@@ -23,6 +26,23 @@ This playground uses the same `@walletconnect/universal-provider` + `@reown/appk
 <div class="playground-result" id="wc-session"></div>
 
 <script>
+document.getElementById('btn-paste-project-id').addEventListener('click', async function() {
+  var input = document.getElementById('wc-project-id');
+  var statusEl = document.getElementById('wc-status');
+  try {
+    input.value = await navigator.clipboard.readText();
+  } catch (e) {
+    // iOS Safari rejects clipboard.readText() and renders its own
+    // "Paste" overlay near the button — the user taps that to confirm.
+    // The JS rejection is expected and not actionable; suppress it so
+    // the page doesn't show a misleading error on the first tap.
+    var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
+    if (isNotAllowed) return;
+    statusEl.className = 'playground-result error';
+    statusEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
+  }
+});
+
 document.getElementById('btn-wc-connect').addEventListener('click', async function() {
   var statusEl = document.getElementById('wc-status');
   var sessionEl = document.getElementById('wc-session');
