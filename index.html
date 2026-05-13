@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Freighter Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
 </head>
 <body>
@@ -31,7 +31,8 @@
     .playground-btn:disabled { background: #999; cursor: not-allowed; }
     .playground-input {
       width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;
-      font-family: monospace; font-size: 13px; margin: 4px 0 8px 0; box-sizing: border-box;
+      /* 16px minimum prevents iOS Safari from auto-zooming on input focus without blocking user zoom */
+      font-family: monospace; font-size: 16px; margin: 4px 0 8px 0; box-sizing: border-box;
     }
     .playground-result {
       background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 4px;
@@ -44,6 +45,7 @@
     .sidebar { padding: 20px; }
     .sidebar-toggle,
     body.close .sidebar-toggle {
+      box-sizing: border-box;
       height: 50px;
       padding: 20px 20px 36px 20px;
     }

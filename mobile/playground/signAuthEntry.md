@@ -24,12 +24,15 @@ document.getElementById('btn-paste-wc-signAuth').addEventListener('click', async
   try {
     input.value = await navigator.clipboard.readText();
   } catch (e) {
-    // iOS Safari rejects clipboard.readText() and renders its own
-    // "Paste" overlay near the button — the user taps that to confirm.
-    // The JS rejection is expected and not actionable; suppress it so
-    // the page doesn't show a misleading error on the first tap.
-    var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
-    if (isNotAllowed) return;
+    // clipboard.readText() throws NotAllowedError when the browser hasn't
+    // granted permission yet. On iOS Safari this happens before the native
+    // "Paste" prompt appears — the user can tap that prompt to paste.
+    // On other platforms the user may need to grant clipboard permission.
+    if (e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''))) {
+      resultEl.className = 'playground-result';
+      resultEl.textContent = 'Tap the Paste prompt if shown, or grant clipboard permission and try again.';
+      return;
+    }
     resultEl.className = 'playground-result error';
     resultEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
   }
