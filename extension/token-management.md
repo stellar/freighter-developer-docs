@@ -1,6 +1,10 @@
 # Token Management
 
-Add Soroban tokens to a user's Freighter wallet programmatically.
+Unlike Stellar assets, contract tokens a user owns are not automatically displayed in Freighter — they must be explicitly added. This method lets your dapp prompt users to add a contract token directly, without the user having to find and add it in Freighter manually.
+
+{% hint style="info" %}
+In a future release, Freighter will auto-detect token transfers and display them automatically. Once that ships, `addToken()` will become a no-op.
+{% endhint %}
 
 ## Adding a Token
 
@@ -19,8 +23,8 @@ When called, Freighter loads the token's **symbol**, **name**, **decimals**, and
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `contractId` | `string` | **Required.** The Soroban token contract ID. |
-| `networkPassphrase` | `string` | Defaults to Pubnet's passphrase if omitted. |
+| `contractId` | `string` | **Required.** The contract token ID (`C...` address). |
+| `networkPassphrase` | `string` | Defaults to Mainnet passphrase if omitted. |
 
 ### Example
 

@@ -27,13 +27,26 @@ npm install @stellar/freighter-api
 yarn add @stellar/freighter-api
 ```
 
-Then import in your code:
+Then import in your code. You can import the entire library:
 
-```typescript
-import { isConnected, requestAccess, signTransaction } from "@stellar/freighter-api";
+```javascript
+import freighterApi from "@stellar/freighter-api";
 ```
 
-> See the [Developer Guide](../developer-guide/) for the full API reference.
+Or import only what you need:
+
+```javascript
+import {
+  isConnected,
+  getAddress,
+  signAuthEntry,
+  signTransaction,
+  signMessage,
+  addToken,
+} from "@stellar/freighter-api";
+```
+
+> See the [Extension Integration](../extension/) for the full API reference.
 
 ### CDN (script tag)
 
@@ -67,6 +80,6 @@ const { address } = await window.freighterApi.requestAccess();
 
 | I want to...                          | Go to                                                    |
 | ------------------------------------- | -------------------------------------------------------- |
-| Connect my app to Freighter           | [Connecting](../developer-guide/connecting.md)           |
-| Sign a transaction                    | [Signing](../developer-guide/signing.md)                 |
-| Add a token                           | [Token Management](../developer-guide/token-management.md) |
+| Connect my app to Freighter           | [Connecting](../extension/connecting.md)           |
+| Sign a transaction                    | [Signing](../extension/signing.md)                 |
+| Add a token                           | [Token Management](../extension/token-management.md) |
