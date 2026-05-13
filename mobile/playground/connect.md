@@ -71,6 +71,17 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
   statusEl.textContent = 'Loading WalletConnect SDK...';
   sessionEl.textContent = '';
 
+  // Tear down any prior provider/modal before reinitializing. Without
+  // this, reconnect leaves the previous WebSocket open and lets the
+  // old session_delete listener fire mid-reconnect (which would null
+  // the new session's globals).
+  if (window._wcProvider) {
+    try { window._wcProvider.removeAllListeners && window._wcProvider.removeAllListeners(); } catch (_) {}
+    try { await window._wcProvider.disconnect(); } catch (_) {}
+  }
+  window._wcProvider = null;
+  window._wcModal = null;
+
   var modal = null;
 
   try {
@@ -178,10 +189,13 @@ document.getElementById('btn-wc-disconnect').addEventListener('click', async fun
 
   try {
     if (window._wcProvider) {
+      try { window._wcProvider.removeAllListeners && window._wcProvider.removeAllListeners(); } catch (_) {}
       await window._wcProvider.disconnect();
     }
     window._wcSession = null;
     window._wcClient = null;
+    window._wcProvider = null;
+    window._wcModal = null;
     statusEl.className = 'playground-result';
     statusEl.textContent = 'Disconnected';
     sessionEl.textContent = '';
