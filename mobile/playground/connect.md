@@ -76,7 +76,7 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
         name: 'Freighter Docs Playground',
         description: 'Interactive playground for testing Freighter Mobile',
         url: window.location.origin,
-        icons: []
+        icons: ["https://i.imgur.com/yAfj1FC.png"]
       }
     });
 
