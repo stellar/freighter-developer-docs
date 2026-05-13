@@ -20,7 +20,7 @@ import { getAddress } from "@stellar/freighter-api";
 const { address, error } = await getAddress();
 
 if (error) {
-  console.error(error);
+  console.error(error.message);
 } else {
   console.log("Public key:", address);
 }

@@ -16,13 +16,9 @@ signTransaction(xdr: string, opts?: {
 }) -> Promise<{ signedTxXdr: string; signerAddress: string } & { error?: FreighterApiError }>
 ```
 
-The user will be prompted to enter their password (if the extension doesn't currently hold the private key) and then review the transaction details before signing.
+The user will review the transaction details before signing.
 
-{% hint style="warning" %}
-The private key is cached for **5 minutes** after the user enters their password. The transaction must be reviewed and accepted within that window.
-{% endhint %}
-
-### Parameters
+**Parameters**
 
 | Parameter | Type | Description |
 | --- | --- | --- |
@@ -35,7 +31,7 @@ The private key is cached for **5 minutes** after the user enters their password
 Passing `network` or `networkPassphrase` lets Freighter warn the user if their wallet is configured to the wrong network.
 {% endhint %}
 
-### Example
+**Example**
 
 ```typescript
 import { signTransaction } from "@stellar/freighter-api";
@@ -53,11 +49,18 @@ if (error) {
 }
 ```
 
+**Errors**
+
+| Condition | Error message |
+| --- | --- |
+| User rejected | `"The user rejected this request."` |
+| Extension not installed | `"The wallet encountered an internal error"` |
+
 ## Signing an Auth Entry
 
 ### `signAuthEntry()`
 
-Sign a Soroban [authorization entry preimage](https://github.com/stellar/js-stellar-base/blob/a9567e5843760bfb6a8b786592046aee4c9d38b2/types/next.d.ts#L6895) and receive the signed hash back as a base64 string. Used for [Soroban contract authorization](https://developers.stellar.org/docs/smart-contracts/guides/auth/authorization) flows.
+Sign an [authorization entry preimage](https://github.com/stellar/js-stellar-base/blob/a9567e5843760bfb6a8b786592046aee4c9d38b2/types/next.d.ts#L6895) and receive the signed hash back as a base64 string. Used for [Soroban contract authorization](https://developers.stellar.org/docs/smart-contracts/guides/auth/authorization) flows.
 
 ```
 signAuthEntry(entryXdr: string, opts: {
@@ -67,7 +70,7 @@ signAuthEntry(entryXdr: string, opts: {
 
 See the [`authorizeEntry` helper](https://github.com/stellar/js-stellar-base/blob/e3d6fc3351e7d242b374c7c6057668366364a279/src/auth.js#L97) in `js-stellar-base` for how signed auth entries are used, or the [Soroban development documentation](https://developers.stellar.org/docs/smart-contracts) for wallet-side patterns.
 
-### Example
+**Example**
 
 ```typescript
 import { signAuthEntry } from "@stellar/freighter-api";
@@ -83,6 +86,12 @@ if (error) {
 }
 ```
 
+**Errors**
+
+| Condition | Error message |
+| --- | --- |
+| User rejected | `"The user rejected this request."` |
+
 ## Signing a Message
 
 ### `signMessage()`
@@ -95,7 +104,7 @@ signMessage(message: string, opts: {
 }) -> Promise<{ signedMessage: string | null; signerAddress: string } & { error?: FreighterApiError }>
 ```
 
-### Example
+**Example**
 
 ```typescript
 import { signMessage } from "@stellar/freighter-api";
@@ -111,6 +120,12 @@ if (error) {
   console.log("Signature:", signedMessage);
 }
 ```
+
+**Errors**
+
+| Condition | Error message |
+| --- | --- |
+| User rejected | `"The user rejected this request."` |
 
 ## Full Example: Connect, Sign, and Submit
 

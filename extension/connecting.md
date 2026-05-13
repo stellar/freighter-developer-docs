@@ -20,6 +20,10 @@ if (result.isConnected) {
 }
 ```
 
+{% hint style="info" %}
+`isConnected()` checks whether the Freighter extension is installed. Note that it returns `false` for any user without the extension — not just mobile users. To detect Freighter Mobile's in-app browser specifically, check for `window.stellar?.platform === "mobile"`.
+{% endhint %}
+
 ## Checking Authorization
 
 ### `isAllowed()`
@@ -42,7 +46,7 @@ if (result.isAllowed) {
 
 ### `setAllowed()`
 
-Prompt the user to add your app to Freighter's **Allow List**. Once approved, the extension can provide user data without additional prompts.
+Prompt the user to authorize your app and add it to Freighter's **Allow List**. Once approved, the extension can provide user data without additional prompts.
 
 **Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
@@ -64,7 +68,7 @@ If the user has already authorized your app, `setAllowed()` resolves immediately
 
 ### `requestAccess()`
 
-Prompt the user for permission to access their public key. This is the **recommended** way to initiate a connection with Freighter — it handles both authorization and key retrieval in one call.
+Prompt the user to add your dapp to Freighter's Allow List and return their public key in one call. This is the recommended way to connect — it combines authorization and data retrieval in a single step.
 
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
