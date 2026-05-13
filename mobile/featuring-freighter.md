@@ -8,7 +8,7 @@ When a user opens the WalletConnect / Reown modal in your dapp, wallets in the *
 997a355c8f682468706a76cff1b004a7115f505fb962dac54b6e9b442dd1c380
 ```
 
-This is the **public** identifier of Freighter's listing in the [WalletConnect Cloud Explorer](https://walletguide.walletconnect.network/) (a.k.a. Reown Explorer). It is not the same as your dapp's WalletConnect **Project ID** — Project IDs identify the dapp/wallet account on the WalletConnect relay, while Explorer IDs identify a public wallet listing in the directory.
+This is the **public** identifier of Freighter's listing in the [WalletConnect Dashboard Explorer](https://walletguide.walletconnect.network/) (a.k.a. Reown Explorer). It is not the same as your dapp's WalletConnect **Project ID** — Project IDs identify the dapp/wallet account on the WalletConnect relay, while Explorer IDs identify a public wallet listing in the directory.
 
 The Explorer ID can change if Freighter's listing is rotated (e.g. after a security key rotation on our end). If Freighter ever stops appearing in the featured row, look up the current ID using one of the following:
 
