@@ -46,6 +46,7 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 | Connect to Freighter                  | [Connecting](extension/connecting.md)        | [Connecting](mobile/connecting.md)                   |
 | Sign a transaction                    | [Signing](extension/signing.md)              | [Signing](mobile/signing.md)                         |
 | Add a token                           | [Token Management](extension/token-management.md) | —                                               |
+| Try it out                            | [Extension Playground](extension/playground/README.md)       | [Mobile Playground](mobile/playground/README.md)     |
 
 ## Resources
 
