@@ -2,7 +2,7 @@
 
 Test Freighter Mobile's WalletConnect RPC methods directly in your browser. You'll need:
 
-1. A [WalletConnect Cloud](https://cloud.walletconnect.com/) Project ID
+1. A [WalletConnect Dashboard](https://dashboard.walletconnect.com/) Project ID
 2. [Freighter Mobile](https://github.com/stellar/freighter-mobile) installed on your phone
 
 ## Getting Started

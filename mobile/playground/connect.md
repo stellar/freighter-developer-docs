@@ -7,7 +7,7 @@ This playground uses the same `@walletconnect/universal-provider` + `@reown/appk
 <span class="playground-label">WalletConnect Project ID:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
   <div style="position: relative; flex: 1;">
-    <input type="password" class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Cloud project ID" style="margin: 0; width: 100%; padding-right: 40px;" />
+    <input type="password" class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Dashboard project ID" style="margin: 0; width: 100%; padding-right: 40px;" />
     <button type="button" id="btn-toggle-project-id" aria-label="Show project ID" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; padding: 6px 8px; color: #6c5ce7; display: flex; align-items: center;">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
     </button>

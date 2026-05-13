@@ -4,7 +4,7 @@ Get up and running with WalletConnect so your dapp can connect to Freighter Mobi
 
 ## Prerequisites
 
-1. Sign up at [WalletConnect Cloud](https://cloud.walletconnect.com/) and create a project to get your **Project ID**.
+1. Sign up at [WalletConnect Dashboard](https://dashboard.walletconnect.com/) and create a project to get your **Project ID**.
 2. Choose an installation method below.
 
 ## npm / yarn
