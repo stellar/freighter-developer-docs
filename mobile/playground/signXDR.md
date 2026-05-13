@@ -18,21 +18,8 @@ Sign a transaction and return the signed XDR. The transaction is **not** submitt
 <div class="playground-result" id="result-wc-signXDR">Connect to Freighter Mobile first</div>
 
 <script>
-document.getElementById('btn-paste-wc-signXDR').addEventListener('click', async function() {
-  var input = document.getElementById('input-wc-signXDR');
-  var resultEl = document.getElementById('result-wc-signXDR');
-  try {
-    input.value = await navigator.clipboard.readText();
-  } catch (e) {
-    // iOS Safari rejects clipboard.readText() and renders its own
-    // "Paste" overlay near the button — the user taps that to confirm.
-    // The JS rejection is expected and not actionable; suppress it so
-    // the page doesn't show a misleading error on the first tap.
-    var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
-    if (isNotAllowed) return;
-    resultEl.className = 'playground-result error';
-    resultEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
-  }
+document.getElementById('btn-paste-wc-signXDR').addEventListener('click', function() {
+  window.playgroundPaste('input-wc-signXDR', 'result-wc-signXDR');
 });
 
 document.getElementById('btn-wc-signXDR').addEventListener('click', async function() {

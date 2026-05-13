@@ -48,21 +48,8 @@ document.getElementById('btn-toggle-project-id').addEventListener('click', funct
   }
 });
 
-document.getElementById('btn-paste-project-id').addEventListener('click', async function() {
-  var input = document.getElementById('wc-project-id');
-  var statusEl = document.getElementById('wc-status');
-  try {
-    input.value = await navigator.clipboard.readText();
-  } catch (e) {
-    // iOS Safari rejects clipboard.readText() and renders its own
-    // "Paste" overlay near the button — the user taps that to confirm.
-    // The JS rejection is expected and not actionable; suppress it so
-    // the page doesn't show a misleading error on the first tap.
-    var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
-    if (isNotAllowed) return;
-    statusEl.className = 'playground-result error';
-    statusEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
-  }
+document.getElementById('btn-paste-project-id').addEventListener('click', function() {
+  window.playgroundPaste('wc-project-id', 'wc-status');
 });
 
 document.getElementById('btn-wc-connect').addEventListener('click', async function() {

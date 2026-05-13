@@ -18,21 +18,8 @@ Sign an arbitrary UTF-8 message following [SEP-53](https://github.com/stellar/st
 <div class="playground-result" id="result-wc-signMsg">Connect to Freighter Mobile first</div>
 
 <script>
-document.getElementById('btn-paste-wc-signMsg').addEventListener('click', async function() {
-  var input = document.getElementById('input-wc-signMsg');
-  var resultEl = document.getElementById('result-wc-signMsg');
-  try {
-    input.value = await navigator.clipboard.readText();
-  } catch (e) {
-    // iOS Safari rejects clipboard.readText() and renders its own
-    // "Paste" overlay near the button — the user taps that to confirm.
-    // The JS rejection is expected and not actionable; suppress it so
-    // the page doesn't show a misleading error on the first tap.
-    var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
-    if (isNotAllowed) return;
-    resultEl.className = 'playground-result error';
-    resultEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
-  }
+document.getElementById('btn-paste-wc-signMsg').addEventListener('click', function() {
+  window.playgroundPaste('input-wc-signMsg', 'result-wc-signMsg');
 });
 
 document.getElementById('btn-wc-signMsg').addEventListener('click', async function() {
