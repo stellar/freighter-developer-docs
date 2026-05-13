@@ -88,8 +88,8 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
 
   try {
     var providerMod = await import('https://esm.sh/@walletconnect/universal-provider@2');
-    var appkitMod = await import('https://esm.sh/@reown/appkit/core');
-    var networksMod = await import('https://esm.sh/@reown/appkit/networks');
+    var appkitMod = await import('https://esm.sh/@reown/appkit@1/core');
+    var networksMod = await import('https://esm.sh/@reown/appkit@1/networks');
 
     statusEl.textContent = 'Initializing provider...';
     var provider = await providerMod.UniversalProvider.init({
