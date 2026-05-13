@@ -6,7 +6,12 @@ This playground uses the same `@walletconnect/universal-provider` + `@reown/appk
 
 <span class="playground-label">WalletConnect Project ID:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
-  <input class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Cloud project ID" style="margin: 0; flex: 1;" />
+  <div style="position: relative; flex: 1;">
+    <input type="password" class="playground-input" id="wc-project-id" placeholder="Enter your WalletConnect Cloud project ID" style="margin: 0; width: 100%; padding-right: 40px;" />
+    <button type="button" id="btn-toggle-project-id" aria-label="Show project ID" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; padding: 6px 8px; color: #6c5ce7; display: flex; align-items: center;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </div>
   <button class="playground-btn" id="btn-paste-project-id" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
 </div>
 
@@ -26,6 +31,23 @@ This playground uses the same `@walletconnect/universal-provider` + `@reown/appk
 <div class="playground-result" id="wc-session"></div>
 
 <script>
+var EYE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+var EYE_OFF_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+
+document.getElementById('btn-toggle-project-id').addEventListener('click', function() {
+  var input = document.getElementById('wc-project-id');
+  var btn = document.getElementById('btn-toggle-project-id');
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = EYE_OFF_SVG;
+    btn.setAttribute('aria-label', 'Hide project ID');
+  } else {
+    input.type = 'password';
+    btn.innerHTML = EYE_SVG;
+    btn.setAttribute('aria-label', 'Show project ID');
+  }
+});
+
 document.getElementById('btn-paste-project-id').addEventListener('click', async function() {
   var input = document.getElementById('wc-project-id');
   var statusEl = document.getElementById('wc-status');
