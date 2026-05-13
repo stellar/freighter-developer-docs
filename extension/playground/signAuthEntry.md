@@ -5,13 +5,22 @@
 Test Freighter's `signAuthEntry` method:
 
 <span class="playground-label">Enter entry preimage XDR:</span>
-<input class="playground-input" id="input-signAuth-xdr" placeholder="Base64-encoded HashIdPreimage XDR" />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="input-signAuth-xdr" placeholder="Base64-encoded HashIdPreimage XDR" style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-signAuth-xdr" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <span class="playground-label">Enter network passphrase (optional):</span>
-<input class="playground-input" id="input-signAuth-passphrase" placeholder="e.g. Test SDF Network ; September 2015" />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="input-signAuth-passphrase" placeholder="e.g. Test SDF Network ; September 2015" style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-signAuth-passphrase" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <span class="playground-label">Request signature from specific public key (optional):</span>
-<input class="playground-input" id="input-signAuth-address" placeholder="G..." />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="input-signAuth-address" placeholder="G..." style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-signAuth-address" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <button class="playground-btn" id="btn-signAuthEntry">Sign Authorization Entry XDR</button>
 
@@ -22,6 +31,16 @@ Test Freighter's `signAuthEntry` method:
 <div class="playground-result" id="result-signAuth-signer"></div>
 
 <script>
+document.getElementById('btn-paste-signAuth-xdr').addEventListener('click', function() {
+  window.playgroundPaste('input-signAuth-xdr', 'result-signAuth');
+});
+document.getElementById('btn-paste-signAuth-passphrase').addEventListener('click', function() {
+  window.playgroundPaste('input-signAuth-passphrase', 'result-signAuth');
+});
+document.getElementById('btn-paste-signAuth-address').addEventListener('click', function() {
+  window.playgroundPaste('input-signAuth-address', 'result-signAuth');
+});
+
 document.getElementById('btn-signAuthEntry').addEventListener('click', async function() {
   var resultEl = document.getElementById('result-signAuth');
   var signerEl = document.getElementById('result-signAuth-signer');

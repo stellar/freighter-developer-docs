@@ -7,7 +7,10 @@ Sign an arbitrary UTF-8 message following [SEP-53](https://github.com/stellar/st
 > [Connect to Freighter Mobile](mobile/playground/connect.md) first before testing.
 
 <span class="playground-label">Message:</span>
-<input class="playground-input" id="input-wc-signMsg" placeholder="e.g. Verify account ownership" />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="input-wc-signMsg" placeholder="e.g. Verify account ownership" style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-wc-signMsg" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <button class="playground-btn" id="btn-wc-signMsg">Sign Message</button>
 
@@ -15,6 +18,10 @@ Sign an arbitrary UTF-8 message following [SEP-53](https://github.com/stellar/st
 <div class="playground-result" id="result-wc-signMsg">Connect to Freighter Mobile first</div>
 
 <script>
+document.getElementById('btn-paste-wc-signMsg').addEventListener('click', function() {
+  window.playgroundPaste('input-wc-signMsg', 'result-wc-signMsg');
+});
+
 document.getElementById('btn-wc-signMsg').addEventListener('click', async function() {
   var el = document.getElementById('result-wc-signMsg');
 

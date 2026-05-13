@@ -7,7 +7,10 @@ Sign a Soroban authorization entry preimage following [SEP-43](https://github.co
 > [Connect to Freighter Mobile](mobile/playground/connect.md) first before testing.
 
 <span class="playground-label">Entry preimage XDR:</span>
-<input class="playground-input" id="input-wc-signAuth" placeholder="Base64-encoded HashIdPreimage XDR" />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="input-wc-signAuth" placeholder="Base64-encoded HashIdPreimage XDR" style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-wc-signAuth" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <button class="playground-btn" id="btn-wc-signAuth">Sign Auth Entry</button>
 
@@ -15,6 +18,10 @@ Sign a Soroban authorization entry preimage following [SEP-43](https://github.co
 <div class="playground-result" id="result-wc-signAuth">Connect to Freighter Mobile first</div>
 
 <script>
+document.getElementById('btn-paste-wc-signAuth').addEventListener('click', function() {
+  window.playgroundPaste('input-wc-signAuth', 'result-wc-signAuth');
+});
+
 document.getElementById('btn-wc-signAuth').addEventListener('click', async function() {
   var el = document.getElementById('result-wc-signAuth');
 

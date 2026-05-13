@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Freighter Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
 </head>
 <body>
@@ -12,10 +12,31 @@
     window.$docsify = {
       name: 'Freighter Docs',
       loadSidebar: 'SUMMARY.md',
-      subMaxLevel: 2,
       auto2top: true,
       executeScript: true,
     }
+
+    // Shared paste helper for playground pages. Handles missing
+    // Clipboard API (insecure origins), iOS Safari's NotAllowedError
+    // (the OS shows its own paste overlay), and real failures.
+    window.playgroundPaste = async function (inputId, errorElId) {
+      var input = document.getElementById(inputId);
+      var errorEl = errorElId ? document.getElementById(errorElId) : null;
+      if (!navigator.clipboard || typeof navigator.clipboard.readText !== 'function') {
+        if (input) input.focus();
+        return;
+      }
+      try {
+        input.value = await navigator.clipboard.readText();
+      } catch (e) {
+        var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
+        if (isNotAllowed) return;
+        if (errorEl) {
+          errorEl.className = 'playground-result error';
+          errorEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
+        }
+      }
+    };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
@@ -23,7 +44,6 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
   <script src="https://unpkg.com/@stellar/freighter-api/build/index.min.js" async></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
   <style>
     .playground-btn {
       background: #6c5ce7; color: #fff; border: none; padding: 8px 16px;
@@ -43,6 +63,12 @@
     .playground-result.error { border-color: #e74c3c; color: #e74c3c; }
     .playground-result.success { border-color: #27ae60; }
     .playground-label { font-weight: bold; margin-top: 12px; display: block; }
+    .sidebar { padding: 20px; }
+    .sidebar-toggle,
+    body.close .sidebar-toggle {
+      height: 50px;
+      padding: 20px 20px 36px 20px;
+    }
   </style>
 </body>
 </html>

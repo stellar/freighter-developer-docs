@@ -7,7 +7,10 @@ Sign a transaction and return the signed XDR. The transaction is **not** submitt
 > [Connect to Freighter Mobile](mobile/playground/connect.md) first before testing.
 
 <span class="playground-label">Transaction XDR:</span>
-<input class="playground-input" id="input-wc-signXDR" placeholder="Base64-encoded TransactionEnvelope XDR" />
+<div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
+  <input class="playground-input" id="input-wc-signXDR" placeholder="Base64-encoded TransactionEnvelope XDR" style="margin: 0; flex: 1;" />
+  <button class="playground-btn" id="btn-paste-wc-signXDR" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
+</div>
 
 <button class="playground-btn" id="btn-wc-signXDR">Sign Transaction</button>
 
@@ -15,6 +18,10 @@ Sign a transaction and return the signed XDR. The transaction is **not** submitt
 <div class="playground-result" id="result-wc-signXDR">Connect to Freighter Mobile first</div>
 
 <script>
+document.getElementById('btn-paste-wc-signXDR').addEventListener('click', function() {
+  window.playgroundPaste('input-wc-signXDR', 'result-wc-signXDR');
+});
+
 document.getElementById('btn-wc-signXDR').addEventListener('click', async function() {
   var el = document.getElementById('result-wc-signXDR');
 
