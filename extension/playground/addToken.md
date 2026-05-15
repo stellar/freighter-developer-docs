@@ -10,7 +10,7 @@ Test Freighter's `addToken` method:
   <button class="playground-btn" id="btn-paste-addToken-contractId" type="button" style="margin: 0; white-space: nowrap;">Paste</button>
 </div>
 
-<span class="playground-label">Enter network passphrase:</span>
+<span class="playground-label">Enter network passphrase (optional):</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
   <input class="playground-input" id="input-addToken-passphrase" placeholder="e.g. Test SDF Network ; September 2015" style="margin: 0; flex: 1;" />
   <button class="playground-btn" id="btn-paste-addToken-passphrase" type="button" style="margin: 0; white-space: nowrap;">Paste</button>

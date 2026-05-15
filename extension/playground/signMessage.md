@@ -1,6 +1,6 @@
 # signMessage
 
-`signMessage(message: string, opts: { address: string })`
+`signMessage(message: string, opts?: { networkPassphrase?: string; address?: string })`
 
 Test Freighter's `signMessage` method:
 
@@ -34,15 +34,24 @@ The signed message from the response is a base64 encoded string of the signature
 
 ### Verifying the signature
 
+`res.signedMessage` is a base64-encoded 64-byte Ed25519 signature over
+`SHA256("Stellar Signed Message:\n" + message)`. Reconstruct the same hash
+bytes and verify with the signer's `Keypair`:
+
 ```javascript
-const kp = <signing key pair>
+import { Keypair, hash } from "@stellar/stellar-sdk";
+import { signMessage } from "@stellar/freighter-api";
+
 const message = "hi";
-const res = await stellarApi.signMessage(message, {
-  networkPassphrase: SorobanClient.Networks.TESTNET
-});
+const res = await signMessage(message);
+// res.signedMessage is a base64 string, res.signerAddress is the G... public key
+
 const SIGN_MESSAGE_PREFIX = "Stellar Signed Message:\n";
-const messageHash = SHA256(SIGN_MESSAGE_PREFIX + message);
-const passes = kp.verify(Buffer.from(messageHash, "base64"), res.signedMessage);
+const messageHash = hash(Buffer.from(SIGN_MESSAGE_PREFIX + message, "utf8"));
+const signatureBytes = Buffer.from(res.signedMessage, "base64");
+
+const kp = Keypair.fromPublicKey(res.signerAddress);
+const passes = kp.verify(messageHash, signatureBytes);
 // true
 ```
 

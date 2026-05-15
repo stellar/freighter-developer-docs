@@ -1,6 +1,6 @@
 # signAuthEntry
 
-`signAuthEntry(entryXdr: string, opts: { address: string })`
+`signAuthEntry(entryXdr: string, opts?: { networkPassphrase?: string; address?: string })`
 
 Test Freighter's `signAuthEntry` method:
 

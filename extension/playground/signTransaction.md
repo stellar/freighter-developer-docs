@@ -1,6 +1,6 @@
 # signTransaction
 
-`signTransaction(xdr: string, opts?: { network?: string, networkPassphrase?: string, address?: string })`
+`signTransaction(xdr: string, opts?: { networkPassphrase?: string; address?: string })`
 
 Test Freighter's `signTransaction` method:
 
