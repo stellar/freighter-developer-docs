@@ -17,7 +17,9 @@
         document.documentElement.setAttribute('data-theme', mql && mql.matches ? 'dark' : 'light');
       };
       apply();
-      if (mql && mql.addEventListener) mql.addEventListener('change', apply);
+      if (!mql) return;
+      if (mql.addEventListener) mql.addEventListener('change', apply);
+      else if (mql.addListener) mql.addListener(apply); // Safari < 14
     })();
   </script>
   <div id="app"></div>
@@ -57,7 +59,7 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
-  <script src="https://unpkg.com/@stellar/freighter-api/build/index.min.js"></script>
+  <script src="https://unpkg.com/@stellar/freighter-api@6.0.1/build/index.min.js"></script>
   <style>
     /* ---------- GitBook-inspired theme over docsify Vue base ---------- */
 
