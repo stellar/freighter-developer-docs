@@ -4,7 +4,7 @@ Get up and running with Freighter by installing the browser extension and choosi
 
 ## Prerequisites
 
-1. Install the [Freighter browser extension](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) from the Chrome Web Store.
+1. Install the Freighter browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/freighter/).
 2. Choose an integration method below based on your project setup.
 
 ## Choose Your Integration

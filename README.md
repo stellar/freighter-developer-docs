@@ -52,6 +52,7 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 
 - [GitHub — Freighter Extension](https://github.com/stellar/freighter)
 - [GitHub — Freighter Mobile](https://github.com/stellar/freighter-mobile)
-- [Chrome Extension Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk)
+- [Freighter on Chrome Web Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk)
+- [Freighter on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/freighter/)
 - [Stellar Developer Docs](https://developers.stellar.org)
 - [WalletConnect v2 Docs](https://docs.walletconnect.network/app-sdk/overview)
