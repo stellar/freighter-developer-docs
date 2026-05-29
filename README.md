@@ -46,12 +46,13 @@ If you want to support multiple Stellar wallets — not just Freighter — take 
 | Connect to Freighter | [Connecting](extension/connecting.md)             | [Connecting](mobile/connecting.md)      |
 | Sign a transaction   | [Signing](extension/signing.md)                   | [Signing](mobile/signing.md)            |
 | Add a token          | [Token Management](extension/token-management.md) | —                                       |
-| Try it out           | [Playground](extension/playground/README.md)      | [Playground](mobile/playground/README.md) |
+| Try it out           | [Playground ↗](https://play.freighter.app)        | [Playground ↗](https://play.freighter.app) |
 
 ## Resources
 
 - [GitHub — Freighter Extension](https://github.com/stellar/freighter)
 - [GitHub — Freighter Mobile](https://github.com/stellar/freighter-mobile)
-- [Chrome Extension Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk)
+- [Freighter on Chrome Web Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk)
+- [Freighter on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/freighter/)
 - [Stellar Developer Docs](https://developers.stellar.org)
 - [WalletConnect v2 Docs](https://docs.walletconnect.network/app-sdk/overview)

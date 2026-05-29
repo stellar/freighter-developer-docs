@@ -2,73 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Freighter Documentation</title>
+  <title>Freighter Playgrounds</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <script>
+    // Inline so it runs before paint and avoids a flash-of-wrong-theme on
+    // dark-mode systems. Follows OS prefers-color-scheme (no user toggle,
+    // matching GitBook's behavior on docs.freighter.app).
+    (function () {
+      var mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+      var apply = function () {
+        document.documentElement.setAttribute('data-theme', mql && mql.matches ? 'dark' : 'light');
+      };
+      apply();
+      if (!mql) return;
+      if (mql.addEventListener) mql.addEventListener('change', apply);
+      else if (mql.addListener) mql.addListener(apply); // Safari < 14
+    })();
+  </script>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: 'Freighter Docs',
-      loadSidebar: 'SUMMARY.md',
+      name: 'Freighter Playgrounds',
+      homepage: 'playgrounds-home.md',
+      loadSidebar: '_sidebar.md',
       auto2top: true,
       executeScript: true,
-    }
-
-    // Shared paste helper for playground pages. Handles missing
-    // Clipboard API (insecure origins), iOS Safari's NotAllowedError
-    // (the OS shows its own paste overlay), and real failures.
-    window.playgroundPaste = async function (inputId, errorElId) {
-      var input = document.getElementById(inputId);
-      var errorEl = errorElId ? document.getElementById(errorElId) : null;
-      if (!navigator.clipboard || typeof navigator.clipboard.readText !== 'function') {
-        if (input) input.focus();
-        return;
-      }
-      try {
-        input.value = await navigator.clipboard.readText();
-      } catch (e) {
-        var isNotAllowed = e && (e.name === 'NotAllowedError' || /not allowed/i.test(e.message || ''));
-        if (isNotAllowed) return;
-        if (errorEl) {
-          errorEl.className = 'playground-result error';
-          errorEl.textContent = 'Clipboard read failed: ' + (e.message || 'permission denied');
-        }
-      }
     };
   </script>
+  <script src="playground.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
-  <script src="https://unpkg.com/@stellar/freighter-api/build/index.min.js"></script>
-  <style>
-    .playground-btn {
-      background: #6c5ce7; color: #fff; border: none; padding: 8px 16px;
-      border-radius: 4px; cursor: pointer; font-size: 14px; margin: 8px 0;
-    }
-    .playground-btn:hover { background: #5b4bd5; }
-    .playground-btn:disabled { background: #999; cursor: not-allowed; }
-    .playground-input {
-      width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;
-      font-family: monospace; font-size: 16px; margin: 4px 0 8px 0; box-sizing: border-box;
-    }
-    .playground-result {
-      background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 4px;
-      padding: 12px; font-family: monospace; font-size: 13px; white-space: pre-wrap;
-      word-break: break-all; margin: 8px 0; min-height: 20px;
-    }
-    .playground-result.error { border-color: #e74c3c; color: #e74c3c; }
-    .playground-result.success { border-color: #27ae60; }
-    .playground-label { font-weight: bold; margin-top: 12px; display: block; }
-    .sidebar { padding: 20px; }
-    .sidebar-toggle,
-    body.close .sidebar-toggle {
-      height: 50px;
-      padding: 20px 20px 36px 20px;
-    }
-  </style>
+  <script src="https://unpkg.com/@stellar/freighter-api@6.0.1/build/index.min.js"></script>
 </body>
 </html>
