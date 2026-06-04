@@ -124,31 +124,6 @@ html, body {
   margin: 16px 12px;
 }
 
-/* ---------- Search ---------- */
-.sidebar .search {
-  margin-bottom: 16px;
-  border-bottom: none;
-  padding: 0 4px;
-}
-.sidebar .search input {
-  border: 1px solid var(--fr-border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 14px;
-  background: var(--fr-bg-subtle);
-  width: 100%;
-  box-sizing: border-box;
-  font-family: var(--fr-font);
-}
-.sidebar .search input:focus {
-  background: var(--fr-bg);
-  outline: 2px solid var(--fr-accent);
-  outline-offset: -1px;
-}
-.sidebar .search .results-panel {
-  font-size: 13px;
-}
-
 /* ---------- Content ---------- */
 .content { left: var(--fr-sidebar-w); }
 .markdown-section {
