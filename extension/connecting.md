@@ -1,6 +1,6 @@
 # Connecting to Freighter
 
-Detect whether a user has Freighter installed, check if your app is authorized, and request access to the user's public key.
+Detect whether a user has Freighter installed, check if your app is authorized, request access to the user's public key, and disconnect.
 
 ## Detecting Freighter
 
@@ -94,6 +94,32 @@ if (accessResult.error) {
 
 {% hint style="warning" %}
 Always check `isConnected()` before calling `requestAccess()` to ensure the extension is available.
+{% endhint %}
+
+## Disconnecting
+
+### `disconnect()`
+
+Revoke your app's access to the user's public key, for example from a "Disconnect" button in your app. Freighter removes your app from the Allow List without asking the user to confirm, so the next call to `requestAccess()` or `setAllowed()` prompts the user again.
+
+**Returns:** `Promise<{ error?: FreighterApiError }>`
+
+```typescript
+import { disconnect } from "@stellar/freighter-api";
+
+const result = await disconnect();
+
+if (result.error) {
+  console.error("Disconnect failed:", result.error.message);
+} else {
+  console.log("App removed from Allow List");
+}
+```
+
+Calling `disconnect()` when your app isn't on the Allow List succeeds without changing anything. It returns an error if the wallet is locked, or if the installed version of Freighter doesn't support `disconnect()`.
+
+{% hint style="warning" %}
+Freighter authorizes apps per account and per network, and `disconnect()` only revokes access for the account and network that are active when you call it. If the user previously authorized your app on another account or network, your app will have access to that public key again, without a prompt, when the user switches to it.
 {% endhint %}
 
 ## Next steps
