@@ -17,6 +17,7 @@ For docs and integration guides, see [docs.freighter.app](https://docs.freighter
 | [isAllowed](extension/playground/isAllowed.md) | Check if your app is authorized |
 | [setAllowed](extension/playground/setAllowed.md) | Request authorization for your app |
 | [requestAccess](extension/playground/requestAccess.md) | Request the user's public key |
+| [disconnect](extension/playground/disconnect.md) | Revoke your app's access |
 | [getAddress](extension/playground/getAddress.md) | Get the user's wallet address |
 | [getNetwork](extension/playground/getNetwork.md) | Get the active network |
 | [getNetworkDetails](extension/playground/getNetworkDetails.md) | Get full network configuration |
