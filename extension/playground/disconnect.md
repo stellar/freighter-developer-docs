@@ -15,6 +15,11 @@ document.getElementById('btn-disconnect').addEventListener('click', async functi
   var el = document.getElementById('result-disconnect');
   el.className = 'playground-result';
   el.textContent = 'Disconnecting...';
+  if (typeof window.freighterApi.disconnect !== 'function') {
+    el.className = 'playground-result error';
+    el.textContent = 'Error: the loaded version of @stellar/freighter-api does not include disconnect()';
+    return;
+  }
   try {
     var res = await window.freighterApi.disconnect();
     if (res.error) {
