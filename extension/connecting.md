@@ -116,7 +116,7 @@ if (result.error) {
 }
 ```
 
-Calling `disconnect()` when your app isn't on the Allow List succeeds without changing anything. It returns an error if the wallet is locked, or if the installed version of Freighter doesn't support `disconnect()`.
+Calling `disconnect()` when your app isn't on the Allow List succeeds without changing anything. It returns an error if the user hasn't unlocked Freighter since the browser started, or if the installed version of Freighter doesn't support `disconnect()`.
 
 {% hint style="warning" %}
 Freighter authorizes apps per account and per network, and `disconnect()` only revokes access for the account and network that are active when you call it. If the user previously authorized your app on another account or network, your app will have access to that public key again, without a prompt, when the user switches to it.
