@@ -6,6 +6,7 @@
 * [isAllowed](extension/playground/isAllowed.md)
 * [setAllowed](extension/playground/setAllowed.md)
 * [requestAccess](extension/playground/requestAccess.md)
+* [disconnect](extension/playground/disconnect.md)
 * [getAddress](extension/playground/getAddress.md)
 * [getNetwork](extension/playground/getNetwork.md)
 * [getNetworkDetails](extension/playground/getNetworkDetails.md)

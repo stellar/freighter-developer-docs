@@ -24,7 +24,7 @@ interface FreighterApiError {
 
 | Category | Description |
 | --- | --- |
-| [Connecting](connecting.md) | Detect Varial, check permissions, request access |
+| [Connecting](connecting.md) | Detect Varial, check permissions, request access, disconnect |
 | [Reading Data](reading-data.md) | Get the user's address and network configuration |
 | [Signing](signing.md) | Sign transactions, auth entries, and messages |
 | [Token Management](token-management.md) | Add contract tokens to the user's wallet |
