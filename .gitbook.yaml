@@ -3,3 +3,8 @@ root: ./
 structure:
   readme: README.md
   summary: SUMMARY.md
+
+redirects:
+  docs/whatsnew: whats-new.md
+  docs/guide/usingfreighterwebapp: extension/signing.md
+  docs/guide/introduction: README.md
