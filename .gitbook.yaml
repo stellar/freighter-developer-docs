@@ -8,3 +8,6 @@ redirects:
   docs/whatsnew: whats-new.md
   docs/guide/usingfreighterwebapp: extension/signing.md
   docs/guide/introduction: README.md
+  whatsnew: whats-new.md
+  guide/usingfreighterwebapp: extension/signing.md
+  guide/introduction: README.md
