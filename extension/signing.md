@@ -1,12 +1,12 @@
 # Signing
 
-Sign transactions, authorization entries, and arbitrary messages using the user's Freighter wallet.
+Sign transactions, authorization entries, and arbitrary messages using the user's Varial wallet.
 
 ## Signing a Transaction
 
 ### `signTransaction()`
 
-Pass a transaction XDR string to Freighter for the user to review and sign.
+Pass a transaction XDR string to Varial for the user to review and sign.
 
 ```
 signTransaction(xdr: string, opts?: {
@@ -25,10 +25,10 @@ The user will review the transaction details before signing.
 | `xdr` | `string` | **Required.** Base64-encoded transaction XDR. |
 | `opts.network` | `string` | Network name (maps to `Networks` enum in `@stellar/stellar-sdk`). |
 | `opts.networkPassphrase` | `string` | Custom passphrase. Ignored if `network` is also provided. |
-| `opts.address` | `string` | Request a specific account's signature. Freighter will switch to that account if available. |
+| `opts.address` | `string` | Request a specific account's signature. Varial will switch to that account if available. |
 
 {% hint style="info" %}
-Passing `network` or `networkPassphrase` lets Freighter warn the user if their wallet is configured to the wrong network.
+Passing `network` or `networkPassphrase` lets Varial warn the user if their wallet is configured to the wrong network.
 {% endhint %}
 
 **Example**
@@ -135,10 +135,10 @@ A complete flow from connection to Horizon submission:
 import { isConnected, requestAccess, signTransaction } from "@stellar/freighter-api";
 import { Server, TransactionBuilder } from "@stellar/stellar-sdk";
 
-// 1. Check Freighter is installed
+// 1. Check Varial is installed
 const connectResult = await isConnected();
 if (!connectResult.isConnected) {
-  throw new Error("Freighter not found");
+  throw new Error("Varial not found");
 }
 
 // 2. Request the user's public key

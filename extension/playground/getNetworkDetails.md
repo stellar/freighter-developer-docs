@@ -2,11 +2,11 @@
 
 `getNetworkDetails()`
 
-Test Freighter's `getNetworkDetails` method:
+Test the `getNetworkDetails` method:
 
 <button class="playground-btn" id="btn-getNetworkDetails">Get Network Details</button>
 
-<span class="playground-label">What network is Freighter using?</span>
+<span class="playground-label">What network is Varial using?</span>
 <div class="playground-result" id="result-getNetworkDetails">Click the button to test</div>
 
 <script>

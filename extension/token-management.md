@@ -1,9 +1,9 @@
 # Token Management
 
-Unlike Stellar assets, contract tokens a user owns are not automatically displayed in Freighter — they must be explicitly added. This method lets your dapp prompt users to add a contract token directly, without the user having to find and add it in Freighter manually.
+Unlike Stellar assets, contract tokens a user owns are not automatically displayed in Varial — they must be explicitly added. This method lets your dapp prompt users to add a contract token directly, without the user having to find and add it in Varial manually.
 
 {% hint style="info" %}
-In a future release, Freighter will auto-detect token transfers and display them automatically. Once that ships, `addToken()` will become a no-op.
+In a future release, Varial will auto-detect token transfers and display them automatically. Once that ships, `addToken()` will become a no-op.
 {% endhint %}
 
 ## Adding a Token
@@ -17,7 +17,7 @@ addToken({ contractId: string, networkPassphrase?: string })
   -> Promise<{ contractId: string } & { error?: FreighterApiError }>
 ```
 
-When called, Freighter loads the token's **symbol**, **name**, **decimals**, and **balance** from the contract and displays them for the user to verify before adding.
+When called, Varial loads the token's **symbol**, **name**, **decimals**, and **balance** from the contract and displays them for the user to verify before adding.
 
 ### Parameters
 
@@ -47,5 +47,5 @@ if (result.error) {
 ```
 
 {% hint style="info" %}
-After the user approves, Freighter will automatically track the token's balance and display it alongside other account balances.
+After the user approves, Varial will automatically track the token's balance and display it alongside other account balances.
 {% endhint %}

@@ -1,6 +1,6 @@
 # Mobile Integration
 
-Connect your dapp to Freighter Mobile using the [WalletConnect v2](https://docs.walletconnect.network/app-sdk/overview) protocol. All methods follow the standard JSON-RPC 2.0 request/response format over a WalletConnect session.
+Connect your dapp to the Varial mobile app using the [WalletConnect v2](https://docs.walletconnect.network/app-sdk/overview) protocol. All methods follow the standard JSON-RPC 2.0 request/response format over a WalletConnect session.
 
 ## Supported Chains
 
@@ -34,12 +34,12 @@ All error responses use JSON-RPC 2.0 format with code `5000`:
 ```
 
 {% hint style="warning" %}
-Freighter Mobile validates that the `chainId` in the request matches the wallet's active network. If the user is on the wrong network, the request is rejected. Always specify `chainId` as a separate argument to `provider.request()`, not inside `params`.
+The Varial mobile app validates that the `chainId` in the request matches the wallet's active network. If the user is on the wrong network, the request is rejected. Always specify `chainId` as a separate argument to `provider.request()`, not inside `params`.
 {% endhint %}
 
 ## Security
 
-Freighter Mobile uses **Blockaid** scanning to protect users:
+The Varial mobile app uses **Blockaid** scanning to protect users:
 
 | Scan type | When it runs |
 | --- | --- |

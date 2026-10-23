@@ -4,7 +4,7 @@
 
 Sign an arbitrary UTF-8 message following [SEP-53](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0053.md).
 
-> [Connect to Freighter Mobile](mobile/playground/connect.md) first before testing.
+> [Connect to Varial](mobile/playground/connect.md) first before testing.
 
 <span class="playground-label">Message:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
@@ -15,7 +15,7 @@ Sign an arbitrary UTF-8 message following [SEP-53](https://github.com/stellar/st
 <button class="playground-btn" id="btn-wc-signMsg">Sign Message</button>
 
 <span class="playground-label">Result:</span>
-<div class="playground-result" id="result-wc-signMsg">Connect to Freighter Mobile first</div>
+<div class="playground-result" id="result-wc-signMsg">Connect to Varial first</div>
 
 <script>
 document.getElementById('btn-paste-wc-signMsg').addEventListener('click', function() {
@@ -39,7 +39,7 @@ document.getElementById('btn-wc-signMsg').addEventListener('click', async functi
   }
 
   el.className = 'playground-result';
-  el.textContent = 'Waiting for approval in Freighter Mobile...';
+  el.textContent = 'Waiting for approval in Varial...';
 
   try {
     var result = await window._wcClient.request({

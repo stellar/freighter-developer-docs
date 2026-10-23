@@ -1,19 +1,19 @@
-# Freighter Playgrounds
+# Varial Playgrounds
 
-Try Freighter's APIs interactively in your browser. Pick a method from the sidebar.
+Try Varial's APIs interactively in your browser. Pick a method from the sidebar.
 
-For docs and integration guides, see [docs.freighter.app](https://docs.freighter.app).
+For docs and integration guides, see [docs.varialwallet.com](https://docs.varialwallet.com).
 
 ## Before you start
 
-- **Extension playgrounds** require the Freighter browser extension ([Chrome](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) · [Firefox](https://addons.mozilla.org/en-US/firefox/addon/freighter/)).
-- **Mobile playgrounds** use WalletConnect — you'll need Freighter Mobile on your phone ([iOS App Store](https://apps.apple.com/app/freighter/id6743947720) · [Google Play](https://play.google.com/store/apps/details?id=org.stellar.freighterwallet)) to scan the connection QR code.
+- **Extension playgrounds** require the Varial browser extension ([Chrome](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) · [Firefox](https://addons.mozilla.org/en-US/firefox/addon/freighter/)).
+- **Mobile playgrounds** use WalletConnect — you'll need the Varial mobile app on your phone ([iOS App Store](https://apps.apple.com/app/freighter/id6743947720) · [Google Play](https://play.google.com/store/apps/details?id=org.stellar.freighterwallet)) to scan the connection QR code.
 
 ## Extension (`@stellar/freighter-api`)
 
 | Method | Description |
 | --- | --- |
-| [isConnected](extension/playground/isConnected.md) | Check if Freighter is installed |
+| [isConnected](extension/playground/isConnected.md) | Check if Varial is installed |
 | [isAllowed](extension/playground/isAllowed.md) | Check if your app is authorized |
 | [setAllowed](extension/playground/setAllowed.md) | Request authorization for your app |
 | [requestAccess](extension/playground/requestAccess.md) | Request the user's public key |

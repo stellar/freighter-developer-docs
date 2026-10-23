@@ -1,10 +1,10 @@
 # Installation
 
-Get up and running with Freighter by installing the browser extension and choosing the right integration method for your app.
+Get up and running with Varial by installing the browser extension and choosing the right integration method for your app.
 
 ## Prerequisites
 
-1. Install the Freighter browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/freighter/).
+1. Install the Varial browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/freighter/).
 2. Choose an integration method below based on your project setup.
 
 ## Choose Your Integration
@@ -80,6 +80,6 @@ const { address } = await window.freighterApi.requestAccess();
 
 | I want to...                          | Go to                                                    |
 | ------------------------------------- | -------------------------------------------------------- |
-| Connect my app to Freighter           | [Connecting](../extension/connecting.md)           |
+| Connect my app to Varial              | [Connecting](../extension/connecting.md)           |
 | Sign a transaction                    | [Signing](../extension/signing.md)                 |
 | Add a token                           | [Token Management](../extension/token-management.md) |

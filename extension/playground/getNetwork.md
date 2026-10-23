@@ -2,14 +2,14 @@
 
 `getNetwork()`
 
-Test Freighter's `getNetwork` method:
+Test the `getNetwork` method:
 
 <button class="playground-btn" id="btn-getNetwork">Get Network</button>
 
-<span class="playground-label">What network is Freighter using?</span>
+<span class="playground-label">What network is Varial using?</span>
 <div class="playground-result" id="result-getNetwork-name">Click the button to test</div>
 
-<span class="playground-label">What network passphrase is Freighter using?</span>
+<span class="playground-label">What network passphrase is Varial using?</span>
 <div class="playground-result" id="result-getNetwork-passphrase"></div>
 
 <script>

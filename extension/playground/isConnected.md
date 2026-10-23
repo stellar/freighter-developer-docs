@@ -2,9 +2,9 @@
 
 `isConnected()`
 
-Test Freighter's `isConnected` method:
+Test the `isConnected` method:
 
-**Is Freighter currently connected to your browser?**
+**Is Varial currently connected to your browser?**
 
 <button class="playground-btn" id="btn-isConnected">Check Connection</button>
 

@@ -1,6 +1,6 @@
 # Reading Data
 
-Retrieve the user's public key and network configuration from Freighter.
+Retrieve the user's public key and network configuration from Varial.
 
 {% hint style="info" %}
 These methods require that the user has previously authorized your app via [`requestAccess()`](connecting.md#requesting-access) or [`setAllowed()`](connecting.md#requesting-authorization).
@@ -10,7 +10,7 @@ These methods require that the user has previously authorized your app via [`req
 
 ### `getAddress()`
 
-A lightweight way to retrieve the user's public key. Unlike `requestAccess()`, this will **not** prompt the user — it returns an empty string if the app isn't authorized or Freighter isn't connected.
+A lightweight way to retrieve the user's public key. Unlike `requestAccess()`, this will **not** prompt the user — it returns an empty string if the app isn't authorized or Varial isn't connected.
 
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
@@ -30,7 +30,7 @@ if (error) {
 
 ### `getNetwork()`
 
-Get the name and passphrase of the network the user has selected in Freighter.
+Get the name and passphrase of the network the user has selected in Varial.
 
 **Returns:** `Promise<{ network: string; networkPassphrase: string } & { error?: FreighterApiError }>`
 

@@ -1,12 +1,12 @@
 # Watching Wallet Changes
 
-Monitor the user's Freighter wallet for address and network changes in real time.
+Monitor the user's Varial wallet for address and network changes in real time.
 
 ## WatchWalletChanges
 
 ### `new WatchWalletChanges(timeout?: number)`
 
-Creates a watcher that polls Freighter for changes at a configurable interval.
+Creates a watcher that polls Varial for changes at a configurable interval.
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |

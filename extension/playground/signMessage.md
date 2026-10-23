@@ -2,7 +2,7 @@
 
 `signMessage(message: string, opts?: { networkPassphrase?: string; address?: string })`
 
-Test Freighter's `signMessage` method:
+Test the `signMessage` method:
 
 The signed message from the response is a base64 encoded string of the signature.
 

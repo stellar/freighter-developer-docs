@@ -2,9 +2,9 @@
 
 `isAllowed()`
 
-Test Freighter's `isAllowed` method:
+Test the `isAllowed` method:
 
-**Is Freighter allowed to transmit data to this dapp?**
+**Is Varial allowed to transmit data to this dapp?**
 
 <button class="playground-btn" id="btn-isAllowed">Check Allowed Status</button>
 

@@ -1,10 +1,10 @@
 # Third-Party Integrations
 
-Freighter connects to third-party services to provide a better user experience. As an open source project, we document these integrations so other wallet developers can adopt similar patterns.
+Varial connects to third-party services to provide a better user experience. As an open source project, we document these integrations so other wallet developers can adopt similar patterns.
 
 ## Multi-Wallet Support
 
-If your dapp needs to support multiple Stellar wallets beyond Freighter, [Stellar Wallets Kit](https://stellarwalletskit.dev/) provides a unified interface for connecting to any Stellar wallet. It handles wallet detection, connection, and signing through a single API, so your users can choose whichever wallet they prefer.
+If your dapp needs to support multiple Stellar wallets beyond Varial, [Stellar Wallets Kit](https://stellarwalletskit.dev/) provides a unified interface for connecting to any Stellar wallet. It handles wallet detection, connection, and signing through a single API, so your users can choose whichever wallet they prefer.
 
 ## Available Integrations
 

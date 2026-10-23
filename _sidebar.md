@@ -25,4 +25,4 @@
 
 ---
 
-[← Back to docs](https://docs.freighter.app)
+[← Back to docs](https://docs.varialwallet.com)

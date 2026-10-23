@@ -2,7 +2,7 @@
 
 `requestAccess()`
 
-Test Freighter's `requestAccess` method:
+Test the `requestAccess` method:
 
 <button class="playground-btn" id="btn-requestAccess">Request Access</button>
 

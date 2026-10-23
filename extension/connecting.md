@@ -1,12 +1,12 @@
-# Connecting to Freighter
+# Connecting to Varial
 
-Detect whether a user has Freighter installed, check if your app is authorized, and request access to the user's public key.
+Detect whether a user has Varial installed, check if your app is authorized, and request access to the user's public key.
 
-## Detecting Freighter
+## Detecting Varial
 
 ### `isConnected()`
 
-Check if the user has Freighter installed in their browser.
+Check if the user has Varial installed in their browser.
 
 **Returns:** `Promise<{ isConnected: boolean } & { error?: FreighterApiError }>`
 
@@ -16,19 +16,19 @@ import { isConnected } from "@stellar/freighter-api";
 const result = await isConnected();
 
 if (result.isConnected) {
-  console.log("Freighter is installed");
+  console.log("Varial is installed");
 }
 ```
 
 {% hint style="info" %}
-`isConnected()` checks whether the Freighter extension is installed. Note that it returns `false` for any user without the extension — not just mobile users. To detect Freighter Mobile's in-app browser specifically, check for `window.stellar?.platform === "mobile"`.
+`isConnected()` checks whether the Varial extension is installed. Note that it returns `false` for any user without the extension — not just mobile users. To detect the Varial mobile app's in-app browser specifically, check for `window.stellar?.platform === "mobile"`. The injected `window.stellar.provider` value is still `"freighter"`, the app's old name — it was kept unchanged so existing wallet detection keeps working.
 {% endhint %}
 
 ## Checking Authorization
 
 ### `isAllowed()`
 
-Check if the user has previously authorized your app to receive data from Freighter.
+Check if the user has previously authorized your app to receive data from Varial.
 
 **Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
@@ -46,7 +46,7 @@ if (result.isAllowed) {
 
 ### `setAllowed()`
 
-Prompt the user to authorize your app and add it to Freighter's **Allow List**. Once approved, the extension can provide user data without additional prompts.
+Prompt the user to authorize your app and add it to Varial's **Allow List**. Once approved, the extension can provide user data without additional prompts.
 
 **Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
@@ -68,7 +68,7 @@ If the user has already authorized your app, `setAllowed()` resolves immediately
 
 ### `requestAccess()`
 
-Prompt the user to add your dapp to Freighter's Allow List and return their public key in one call. This is the recommended way to connect — it combines authorization and data retrieval in a single step.
+Prompt the user to add your dapp to Varial's Allow List and return their public key in one call. This is the recommended way to connect — it combines authorization and data retrieval in a single step.
 
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
@@ -80,7 +80,7 @@ import { isConnected, requestAccess } from "@stellar/freighter-api";
 // Always check isConnected first
 const connectResult = await isConnected();
 if (!connectResult.isConnected) {
-  console.error("Freighter is not installed");
+  console.error("Varial is not installed");
   return;
 }
 

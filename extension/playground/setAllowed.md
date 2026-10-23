@@ -2,9 +2,9 @@
 
 `setAllowed()`
 
-Test Freighter's `setAllowed` method:
+Test the `setAllowed` method:
 
-**Prompt the user to add this app to Freighter's Allow List.**
+**Prompt the user to add this app to Varial's Allow List.**
 
 <button class="playground-btn" id="btn-setAllowed">Set Allowed</button>
 

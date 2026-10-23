@@ -2,7 +2,7 @@
 
 `getAddress()`
 
-Test Freighter's `getAddress` method:
+Test the `getAddress` method:
 
 <button class="playground-btn" id="btn-getAddress">Get Address</button>
 

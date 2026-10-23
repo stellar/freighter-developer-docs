@@ -42,8 +42,8 @@ console.log("Signed XDR:", result.signedXDR);
 
 | Condition | Error message |
 | --- | --- |
-| Chain not supported | `"Unsupported chain: <chainId>"` |
-| Wrong active network | `"Please switch to <network> and try again"` |
+| Chain not supported | `"The chain <chainId> is not supported. Please make sure the transaction you are trying to sign was built on a supported Stellar chain"` |
+| Wrong active network | `"Please switch to <network> in Varial Settings and try again"` |
 | XDR parse failure | `"Failed to sign transaction"` |
 | User rejected | `"User rejected the request"` |
 
@@ -81,14 +81,14 @@ console.log("Status:", result.status); // "success"
 
 | Condition | Error message |
 | --- | --- |
-| Chain not supported | `"Unsupported chain: <chainId>"` |
-| Wrong active network | `"Please switch to <network> and try again"` |
+| Chain not supported | `"The chain <chainId> is not supported. Please make sure the transaction you are trying to sign was built on a supported Stellar chain"` |
+| Wrong active network | `"Please switch to <network> in Varial Settings and try again"` |
 | XDR parse / sign failure | `"Failed to sign transaction"` |
 | Horizon submission failure | `"Failed to submit transaction"` |
 | User rejected | `"User rejected the request"` |
 
 {% hint style="info" %}
-Use **`stellar_signXDR`** when you need to inspect or modify the signed transaction before submission. Use **`stellar_signAndSubmitXDR`** for a simpler flow where Freighter handles everything.
+Use **`stellar_signXDR`** when you need to inspect or modify the signed transaction before submission. Use **`stellar_signAndSubmitXDR`** for a simpler flow where Varial handles everything.
 {% endhint %}
 
 ---
@@ -141,10 +141,10 @@ console.log("Signature:", result.signature);
 
 Sign a Soroban authorization entry preimage for multi-auth and custom-account smart contract workflows. Follows [SEP-43](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0043.md).
 
-Your dapp constructs the `HashIdPreimage` (network ID + nonce + expiry + invocation), and Freighter hashes it with SHA-256 and signs the digest.
+Your dapp constructs the `HashIdPreimage` (network ID + nonce + expiry + invocation), and Varial hashes it with SHA-256 and signs the digest.
 
 {% hint style="warning" %}
-Freighter Mobile performs a **Blockaid site scan** during the initial WalletConnect session connection — no additional scan runs at auth-entry signing time. Review the contract address, function name, and subinvocations displayed in the UI before confirming.
+The Varial mobile app performs a **Blockaid site scan** during the initial WalletConnect session connection — no additional scan runs at auth-entry signing time. Review the contract address, function name, and subinvocations displayed in the UI before confirming.
 {% endhint %}
 
 **Parameters**
@@ -184,7 +184,7 @@ console.log("Signer:", result.signerAddress);
 
 ## Full Example: Connect, Sign, and Submit
 
-A complete flow from connection to transaction signing. The AppKit modal displays both a QR code and a list of wallets. When a user opens your dapp in Freighter Mobile's in-app browser, they select Freighter from the wallet list to deep-link into the connection approval — no QR code scanning needed. From an external browser, the user scans the QR code with their phone instead.
+A complete flow from connection to transaction signing. The AppKit modal displays both a QR code and a list of wallets. When a user opens your dapp in the Varial mobile app's in-app browser, they select Varial from the wallet list to deep-link into the connection approval — no QR code scanning needed. From an external browser, the user scans the QR code with their phone instead.
 
 ```typescript
 import { UniversalProvider } from "@walletconnect/universal-provider";
@@ -198,7 +198,7 @@ const provider = await UniversalProvider.init({
   projectId,
   metadata: {
     name: "My Stellar Dapp",
-    description: "A dapp that integrates with Freighter Mobile",
+    description: "A dapp that integrates with Varial",
     url: "https://my-dapp.com",
     icons: ["https://my-dapp.com/icon.png"],
   },
