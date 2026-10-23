@@ -29,7 +29,7 @@ When called, Varial loads the token's **symbol**, **name**, **decimals**, and **
 ### Example
 
 ```typescript
-import { isConnected, addToken } from "@stellar/freighter-api";
+import { isConnected, addToken } from "@stellar/varial-sdk";
 
 const { isConnected: connected } = await isConnected();
 if (!connected) return;

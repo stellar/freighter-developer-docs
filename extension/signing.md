@@ -34,7 +34,7 @@ Passing `network` or `networkPassphrase` lets Varial warn the user if their wall
 **Example**
 
 ```typescript
-import { signTransaction } from "@stellar/freighter-api";
+import { signTransaction } from "@stellar/varial-sdk";
 
 const { signedTxXdr, signerAddress, error } = await signTransaction(xdr, {
   network: "TESTNET",
@@ -73,7 +73,7 @@ See the [`authorizeEntry` helper](https://github.com/stellar/js-stellar-base/blo
 **Example**
 
 ```typescript
-import { signAuthEntry } from "@stellar/freighter-api";
+import { signAuthEntry } from "@stellar/varial-sdk";
 
 const { signedAuthEntry, signerAddress, error } = await signAuthEntry(entryXdr, {
   address: "G...",
@@ -107,7 +107,7 @@ signMessage(message: string, opts: {
 **Example**
 
 ```typescript
-import { signMessage } from "@stellar/freighter-api";
+import { signMessage } from "@stellar/varial-sdk";
 
 const { signedMessage, signerAddress, error } = await signMessage(
   "Verify account ownership",
@@ -132,7 +132,7 @@ if (error) {
 A complete flow from connection to Horizon submission:
 
 ```typescript
-import { isConnected, requestAccess, signTransaction } from "@stellar/freighter-api";
+import { isConnected, requestAccess, signTransaction } from "@stellar/varial-sdk";
 import { Server, TransactionBuilder } from "@stellar/stellar-sdk";
 
 // 1. Check Varial is installed

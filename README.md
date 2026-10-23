@@ -1,7 +1,7 @@
 # Welcome to Varial
 
 {% hint style="info" %}
-**Freighter is now Varial.** Same wallet, new name. Existing integrations keep working unchanged — `@stellar/freighter-api` and the WalletConnect methods are the same.
+**Freighter is now Varial.** Same wallet, new name. Existing integrations keep working unchanged — dapps on `@stellar/freighter-api` and the WalletConnect methods are unaffected. New integrations should use [`@stellar/varial-sdk`](extension/installation.md), the extension SDK's new name.
 {% endhint %}
 
 Varial (formerly Freighter) is a non-custodial wallet for the Stellar network, available as a browser extension and a mobile app. Non-custodial means your users hold their own keys — your dapp never sees or stores private keys. This guide walks you through integrating Varial so your users can connect their wallets, sign transactions, and interact with Soroban smart contracts.
@@ -36,7 +36,7 @@ If you want to support multiple Stellar wallets — not just Varial — take a l
 
 ## Get Started
 
-**Desktop** — integrate with the Varial browser extension using `@stellar/freighter-api`. See the [Extension Guide](extension/installation.md).
+**Desktop** — integrate with the Varial browser extension using `@stellar/varial-sdk`. See the [Extension Guide](extension/installation.md).
 
 **Mobile** — connect to the Varial mobile app over WalletConnect v2. See the [Mobile Guide](mobile/README.md).
 

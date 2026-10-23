@@ -11,7 +11,7 @@ Check if the user has Varial installed in their browser.
 **Returns:** `Promise<{ isConnected: boolean } & { error?: FreighterApiError }>`
 
 ```typescript
-import { isConnected } from "@stellar/freighter-api";
+import { isConnected } from "@stellar/varial-sdk";
 
 const result = await isConnected();
 
@@ -33,7 +33,7 @@ Check if the user has previously authorized your app to receive data from Varial
 **Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
 ```typescript
-import { isAllowed } from "@stellar/freighter-api";
+import { isAllowed } from "@stellar/varial-sdk";
 
 const result = await isAllowed();
 
@@ -51,7 +51,7 @@ Prompt the user to authorize your app and add it to Varial's **Allow List**. Onc
 **Returns:** `Promise<{ isAllowed: boolean } & { error?: FreighterApiError }>`
 
 ```typescript
-import { setAllowed } from "@stellar/freighter-api";
+import { setAllowed } from "@stellar/varial-sdk";
 
 const result = await setAllowed();
 
@@ -75,7 +75,7 @@ Prompt the user to add your dapp to Varial's Allow List and return their public 
 If the user has previously authorized your app, the public key is returned immediately without a popup.
 
 ```typescript
-import { isConnected, requestAccess } from "@stellar/freighter-api";
+import { isConnected, requestAccess } from "@stellar/varial-sdk";
 
 // Always check isConnected first
 const connectResult = await isConnected();

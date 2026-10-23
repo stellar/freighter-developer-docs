@@ -27,7 +27,7 @@ Stop polling for changes.
 ### Example
 
 ```typescript
-import { WatchWalletChanges } from "@stellar/freighter-api";
+import { WatchWalletChanges } from "@stellar/varial-sdk";
 
 const watcher = new WatchWalletChanges(1000); // poll every second
 

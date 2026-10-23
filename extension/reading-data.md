@@ -15,7 +15,7 @@ A lightweight way to retrieve the user's public key. Unlike `requestAccess()`, t
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
 ```typescript
-import { getAddress } from "@stellar/freighter-api";
+import { getAddress } from "@stellar/varial-sdk";
 
 const { address, error } = await getAddress();
 
@@ -37,7 +37,7 @@ Get the name and passphrase of the network the user has selected in Varial.
 Possible `network` values: `PUBLIC`, `TESTNET`, `FUTURENET`, or `STANDALONE` (custom networks).
 
 ```typescript
-import { getNetwork } from "@stellar/freighter-api";
+import { getNetwork } from "@stellar/varial-sdk";
 
 const { network, networkPassphrase, error } = await getNetwork();
 
@@ -54,7 +54,7 @@ Get comprehensive network configuration including the Horizon URL, passphrase, a
 **Returns:** `Promise<{ network: string; networkUrl: string; networkPassphrase: string; sorobanRpcUrl?: string } & { error?: FreighterApiError }>`
 
 ```typescript
-import { getNetworkDetails } from "@stellar/freighter-api";
+import { getNetworkDetails } from "@stellar/varial-sdk";
 
 const details = await getNetworkDetails();
 

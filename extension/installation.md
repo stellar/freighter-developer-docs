@@ -20,17 +20,17 @@ Use this when building with a bundler (Webpack, Vite, etc.) in a React, Next.js,
 - Any project using a JavaScript bundler
 
 ```bash
-npm install @stellar/freighter-api
+npm install @stellar/varial-sdk
 ```
 
 ```bash
-yarn add @stellar/freighter-api
+yarn add @stellar/varial-sdk
 ```
 
 Then import in your code. You can import the entire library:
 
 ```javascript
-import freighterApi from "@stellar/freighter-api";
+import varialSdk from "@stellar/varial-sdk";
 ```
 
 Or import only what you need:
@@ -43,8 +43,12 @@ import {
   signTransaction,
   signMessage,
   addToken,
-} from "@stellar/freighter-api";
+} from "@stellar/varial-sdk";
 ```
+
+{% hint style="info" %}
+**Upgrading from `@stellar/freighter-api`?** `@stellar/varial-sdk` is the same SDK under its new name, starting at version 1.0.0. Swap the package and change the import path — method names, parameters and return types are the same. `@stellar/freighter-api` stays at 6.0.1 with no new releases: dapps already using it keep working, but new methods such as `disconnect()` are only in `@stellar/varial-sdk`.
+{% endhint %}
 
 > See the [Extension Integration](../extension/) for the full API reference.
 
@@ -61,16 +65,16 @@ Use this for plain HTML pages or projects without a build step. The library is l
 Add to your `<head>`:
 
 ```html
-<script src="https://unpkg.com/@stellar/freighter-api/build/index.min.js"></script>
+<script src="https://unpkg.com/@stellar/varial-sdk/build/index.min.js"></script>
 ```
 
 This always loads the latest version automatically. To pin a specific version:
 
 ```html
-<script src="https://unpkg.com/@stellar/freighter-api@6.0.1/build/index.min.js"></script>
+<script src="https://unpkg.com/@stellar/varial-sdk@1.0.0/build/index.min.js"></script>
 ```
 
-Then access the API via `window.freighterApi`:
+Then access the API via `window.freighterApi` (the global keeps its previous name):
 
 ```javascript
 const { address } = await window.freighterApi.requestAccess();

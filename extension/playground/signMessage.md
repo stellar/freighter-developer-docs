@@ -40,7 +40,7 @@ bytes and verify with the signer's `Keypair`:
 
 ```javascript
 import { Keypair, hash } from "@stellar/stellar-sdk";
-import { signMessage } from "@stellar/freighter-api";
+import { signMessage } from "@stellar/varial-sdk";
 
 const message = "hi";
 const res = await signMessage(message);
