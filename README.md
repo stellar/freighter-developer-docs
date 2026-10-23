@@ -24,7 +24,7 @@ Both paths produce the same output: signed transactions you can submit to the St
 
 If you want to support multiple Stellar wallets — not just Varial — take a look at [Stellar Wallets Kit](https://stellarwalletskit.dev/). It provides a unified interface across Stellar wallets, including browser extensions and WalletConnect-based mobile wallets, so your users can connect with whichever wallet they prefer.
 
-> **Note:** Stellar Wallets Kit's WalletConnect module currently only exposes `stellar_signXDR` and `stellar_signAndSubmitXDR`. If your dapp needs `stellar_signMessage` or `stellar_signAuthEntry` against the Varial mobile app, integrate WalletConnect directly for now (tracked in [stellar/freighter-mobile#815](https://github.com/stellar/freighter-mobile/issues/815)).
+> **Note:** Stellar Wallets Kit's WalletConnect module supports all four methods the Varial mobile app exposes — `stellar_signXDR`, `stellar_signAndSubmitXDR`, `stellar_signMessage`, and `stellar_signAuthEntry` — from v2.3.0. Older versions only expose the first two; upgrade the kit, or integrate WalletConnect directly, if you need message or auth entry signing.
 
 ## Why Varial
 
