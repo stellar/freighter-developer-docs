@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [What's New](whats-new.md)
 
 ## Extension (freighter-api)
 
