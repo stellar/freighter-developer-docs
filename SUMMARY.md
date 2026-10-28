@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * [What's New](whats-new.md)
 
-## Extension (freighter-api)
+## Extension (varial-sdk)
 
 * [Installation](extension/installation.md)
 * [Overview](extension/README.md)

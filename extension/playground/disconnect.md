@@ -17,7 +17,7 @@ document.getElementById('btn-disconnect').addEventListener('click', async functi
   el.textContent = 'Disconnecting...';
   if (!window.freighterApi || typeof window.freighterApi.disconnect !== 'function') {
     el.className = 'playground-result error';
-    el.textContent = 'Error: the loaded SDK does not include disconnect(), which is available from @stellar/varial-sdk 1.0.0';
+    el.textContent = 'Error: the loaded SDK does not include disconnect(), which is available from @stellar/varial-sdk 7.0.0';
     return;
   }
   try {

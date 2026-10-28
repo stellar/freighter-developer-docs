@@ -102,7 +102,7 @@ Always check `isConnected()` before calling `requestAccess()` to ensure the exte
 
 Revoke your app's access to the user's public key, for example from a "Disconnect" button in your app. Varial removes your app from the Allow List without asking the user to confirm, so the next call to `requestAccess()` or `setAllowed()` prompts the user again.
 
-`disconnect()` is available in `@stellar/varial-sdk` 1.0.0 and later. `@stellar/freighter-api` 6.0.1 doesn't include it.
+`disconnect()` is available in `@stellar/varial-sdk` 7.0.0 and later. `@stellar/freighter-api` 6.0.1 doesn't include it.
 
 **Returns:** `Promise<{ error?: FreighterApiError }>`
 

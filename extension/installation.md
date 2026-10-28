@@ -47,7 +47,7 @@ import {
 ```
 
 {% hint style="info" %}
-**Upgrading from `@stellar/freighter-api`?** `@stellar/varial-sdk` is the same SDK under its new name, starting at version 1.0.0. Swap the package and change the import path — method names, parameters and return types are the same. `@stellar/freighter-api` stays at 6.0.1 with no new releases: dapps already using it keep working, but new methods such as `disconnect()` are only in `@stellar/varial-sdk`.
+**Upgrading from `@stellar/freighter-api`?** `@stellar/varial-sdk` is the same SDK under its new name, continuing from version 7.0.0. Swap the package and change the import path — method names, parameters and return types are the same. `@stellar/freighter-api` stays at 6.0.1 with no new releases: dapps already using it keep working, but new methods such as `disconnect()` are only in `@stellar/varial-sdk`.
 {% endhint %}
 
 > See the [Extension Integration](../extension/) for the full API reference.
@@ -71,7 +71,7 @@ Add to your `<head>`:
 This always loads the latest version automatically. To pin a specific version:
 
 ```html
-<script src="https://unpkg.com/@stellar/varial-sdk@1.0.0/build/index.min.js"></script>
+<script src="https://unpkg.com/@stellar/varial-sdk@7.0.0/build/index.min.js"></script>
 ```
 
 Then access the API via `window.freighterApi` (the global keeps its previous name):

@@ -9,7 +9,7 @@ For docs and integration guides, see [docs.varialwallet.com](https://docs.varial
 - **Extension playgrounds** require the Varial browser extension ([Chrome](https://chromewebstore.google.com/detail/freighter/bcacfldlkkdogcmkkibnjlakofdplcbk) · [Firefox](https://addons.mozilla.org/en-US/firefox/addon/freighter/)).
 - **Mobile playgrounds** use WalletConnect — you'll need the Varial mobile app on your phone ([iOS App Store](https://apps.apple.com/app/freighter/id6743947720) · [Google Play](https://play.google.com/store/apps/details?id=org.stellar.freighterwallet)) to scan the connection QR code.
 
-## Extension (`@stellar/freighter-api`)
+## Extension (`@stellar/varial-sdk`)
 
 | Method | Description |
 | --- | --- |
