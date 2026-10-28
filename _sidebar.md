@@ -1,6 +1,6 @@
 * [Playgrounds](playgrounds-home.md)
 
-**Extension (`@stellar/freighter-api`)**
+**Extension (`@stellar/varial-sdk`)**
 
 * [isConnected](extension/playground/isConnected.md)
 * [isAllowed](extension/playground/isAllowed.md)
