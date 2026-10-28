@@ -1,3 +1,12 @@
 [build]
   publish = "."
   command = ""
+
+# play.freighter.app -> play.varialwallet.com, path-preserving. Netlify only
+# auto-redirects its own subdomain and apex/www to the primary domain, not
+# other aliases, so the old host needs an explicit rule.
+[[redirects]]
+  from   = "https://play.freighter.app/*"
+  to     = "https://play.varialwallet.com/:splat"
+  status = 301
+  force  = true
