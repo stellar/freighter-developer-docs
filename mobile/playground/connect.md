@@ -1,6 +1,6 @@
 # Connect
 
-Establish a WalletConnect v2 session with Freighter Mobile.
+Establish a WalletConnect v2 session with the Varial mobile app.
 
 This playground uses the same `@walletconnect/universal-provider` + `@reown/appkit` stack documented in [Installation](mobile/installation.md). Clicking **Connect** opens the WalletConnect modal — it shows a QR for desktop and a wallet list with one-tap deep-links on mobile.
 
@@ -21,7 +21,7 @@ This playground uses the same `@walletconnect/universal-provider` + `@reown/appk
   <option value="stellar:testnet">Testnet (stellar:testnet)</option>
 </select>
 
-<button class="playground-btn" id="btn-wc-connect">Connect to Freighter Mobile</button>
+<button class="playground-btn" id="btn-wc-connect">Connect to Varial</button>
 <button class="playground-btn" id="btn-wc-disconnect" disabled>Disconnect</button>
 
 <span class="playground-label">Status:</span>
@@ -99,10 +99,10 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
     var provider = await providerMod.UniversalProvider.init({
       projectId: projectId,
       metadata: {
-        name: 'Freighter Docs Playground',
-        description: 'Interactive playground for testing Freighter Mobile',
+        name: 'Varial Docs Playground',
+        description: 'Interactive playground for testing Varial',
         url: window.location.origin,
-        icons: ["https://i.imgur.com/yAfj1FC.png"]
+        icons: ["https://freighter-protocol-icons.stellar.org/protocol-icons/freighter-play.png"]
       }
     });
 
@@ -111,16 +111,16 @@ document.getElementById('btn-wc-connect').addEventListener('click', async functi
     // AppKit not to use it for chain switching; the modal is just
     // a UI shell over the URI emitted by UniversalProvider.
     //
-    // featuredWalletIds surfaces Freighter at the top of the modal
+    // featuredWalletIds surfaces Varial at the top of the modal
     // regardless of the EVM-shaped network filter — see the
-    // "Featuring Freighter" doc for how to look up / rotate this id.
+    // "Featuring Varial" doc for how to look up / rotate this id.
     modal = appkitMod.createAppKit({
       projectId: projectId,
       networks: [networksMod.mainnet],
       universalProvider: provider,
       manualWCControl: true,
       featuredWalletIds: [
-        '997a355c8f682468706a76cff1b004a7115f505fb962dac54b6e9b442dd1c380', // Freighter
+        '997a355c8f682468706a76cff1b004a7115f505fb962dac54b6e9b442dd1c380', // Varial
       ],
     });
 

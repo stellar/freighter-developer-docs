@@ -2,7 +2,7 @@
 
 `signTransaction(xdr: string, opts?: { networkPassphrase?: string; address?: string })`
 
-Test Freighter's `signTransaction` method:
+Test the `signTransaction` method:
 
 <span class="playground-label">Enter transaction XDR:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">

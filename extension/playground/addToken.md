@@ -2,7 +2,7 @@
 
 `addToken({ contractId: string, networkPassphrase?: string })`
 
-Test Freighter's `addToken` method:
+Test the `addToken` method:
 
 <span class="playground-label">Enter Token's Contract Id:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">

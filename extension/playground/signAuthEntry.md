@@ -2,7 +2,7 @@
 
 `signAuthEntry(entryXdr: string, opts?: { networkPassphrase?: string; address?: string })`
 
-Test Freighter's `signAuthEntry` method:
+Test the `signAuthEntry` method:
 
 <span class="playground-label">Enter entry preimage XDR:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">

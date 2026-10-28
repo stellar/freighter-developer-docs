@@ -2,7 +2,7 @@
 
 `WatchWalletChanges()`
 
-Test Freighter's `WatchWalletChanges` method:
+Test the `WatchWalletChanges` method:
 
 <button class="playground-btn" id="btn-watch">Start watching</button>
 <button class="playground-btn" id="btn-stopWatch" disabled>Stop watching</button>

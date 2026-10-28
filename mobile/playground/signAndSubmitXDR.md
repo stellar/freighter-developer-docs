@@ -4,7 +4,7 @@
 
 Sign a transaction **and** submit it to Horizon in one step.
 
-> [Connect to Freighter Mobile](mobile/playground/connect.md) first before testing.
+> [Connect to Varial](mobile/playground/connect.md) first before testing.
 
 <span class="playground-label">Transaction XDR:</span>
 <div style="display: flex; gap: 8px; margin: 4px 0 8px 0;">
@@ -15,7 +15,7 @@ Sign a transaction **and** submit it to Horizon in one step.
 <button class="playground-btn" id="btn-wc-signSubmitXDR">Sign & Submit Transaction</button>
 
 <span class="playground-label">Result:</span>
-<div class="playground-result" id="result-wc-signSubmitXDR">Connect to Freighter Mobile first</div>
+<div class="playground-result" id="result-wc-signSubmitXDR">Connect to Varial first</div>
 
 <script>
 document.getElementById('btn-paste-wc-signSubmitXDR').addEventListener('click', function() {
@@ -39,7 +39,7 @@ document.getElementById('btn-wc-signSubmitXDR').addEventListener('click', async 
   }
 
   el.className = 'playground-result';
-  el.textContent = 'Waiting for approval in Freighter Mobile...';
+  el.textContent = 'Waiting for approval in Varial...';
 
   try {
     var result = await window._wcClient.request({

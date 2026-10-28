@@ -1,6 +1,6 @@
 # Reading Data
 
-Retrieve the user's public key and network configuration from Freighter.
+Retrieve the user's public key and network configuration from Varial.
 
 {% hint style="info" %}
 These methods require that the user has previously authorized your app via [`requestAccess()`](connecting.md#requesting-access) or [`setAllowed()`](connecting.md#requesting-authorization).
@@ -10,12 +10,12 @@ These methods require that the user has previously authorized your app via [`req
 
 ### `getAddress()`
 
-A lightweight way to retrieve the user's public key. Unlike `requestAccess()`, this will **not** prompt the user — it returns an empty string if the app isn't authorized or Freighter isn't connected.
+A lightweight way to retrieve the user's public key. Unlike `requestAccess()`, this will **not** prompt the user — it returns an empty string if the app isn't authorized or Varial isn't connected.
 
 **Returns:** `Promise<{ address: string } & { error?: FreighterApiError }>`
 
 ```typescript
-import { getAddress } from "@stellar/freighter-api";
+import { getAddress } from "@stellar/varial-sdk";
 
 const { address, error } = await getAddress();
 
@@ -30,14 +30,14 @@ if (error) {
 
 ### `getNetwork()`
 
-Get the name and passphrase of the network the user has selected in Freighter.
+Get the name and passphrase of the network the user has selected in Varial.
 
 **Returns:** `Promise<{ network: string; networkPassphrase: string } & { error?: FreighterApiError }>`
 
 Possible `network` values: `PUBLIC`, `TESTNET`, `FUTURENET`, or `STANDALONE` (custom networks).
 
 ```typescript
-import { getNetwork } from "@stellar/freighter-api";
+import { getNetwork } from "@stellar/varial-sdk";
 
 const { network, networkPassphrase, error } = await getNetwork();
 
@@ -54,7 +54,7 @@ Get comprehensive network configuration including the Horizon URL, passphrase, a
 **Returns:** `Promise<{ network: string; networkUrl: string; networkPassphrase: string; sorobanRpcUrl?: string } & { error?: FreighterApiError }>`
 
 ```typescript
-import { getNetworkDetails } from "@stellar/freighter-api";
+import { getNetworkDetails } from "@stellar/varial-sdk";
 
 const details = await getNetworkDetails();
 

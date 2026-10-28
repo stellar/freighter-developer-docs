@@ -1,12 +1,12 @@
-# Connecting to Freighter Mobile
+# Connecting to the Varial mobile app
 
-Establish a WalletConnect session with Freighter Mobile, handle session lifecycle events, and disconnect.
+Establish a WalletConnect session with the Varial mobile app, handle session lifecycle events, and disconnect.
 
 Assumes `provider` and `modal` are initialized as shown in [Installation](installation.md).
 
 ## Creating a Session
 
-Call `modal.open()` to show the wallet selection modal, then `provider.connect()` to start the pairing. The modal displays a QR code and a list of wallets — when the user selects Freighter or scans the QR code, the connection is established automatically. `connect()` resolves once the wallet approves.
+Call `modal.open()` to show the wallet selection modal, then `provider.connect()` to start the pairing. The modal displays a QR code and a list of wallets — when the user selects Varial or scans the QR code, the connection is established automatically. `connect()` resolves once the wallet approves.
 
 ```typescript
 // Open the modal (shows a spinner, then the QR code and wallet list)

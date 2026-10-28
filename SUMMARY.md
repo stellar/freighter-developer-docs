@@ -12,7 +12,7 @@
 * [Signing](extension/signing.md)
 * [Token Management](extension/token-management.md)
 * [Watching Changes](extension/watching-changes.md)
-* [Playground ↗](https://play.freighter.app)
+* [Playground ↗](https://play.varialwallet.com)
 
 ## Mobile (WalletConnect)
 
@@ -20,8 +20,8 @@
 * [Overview](mobile/README.md)
 * [Connecting](mobile/connecting.md)
 * [Signing](mobile/signing.md)
-* [Featuring Freighter](mobile/featuring-freighter.md)
-* [Playground ↗](https://play.freighter.app)
+* [Featuring Varial](mobile/featuring-freighter.md)
+* [Playground ↗](https://play.varialwallet.com)
 
 ## Integrations
 

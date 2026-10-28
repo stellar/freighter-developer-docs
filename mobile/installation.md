@@ -1,6 +1,6 @@
 # Installation
 
-Get up and running with WalletConnect so your dapp can connect to Freighter Mobile.
+Get up and running with WalletConnect so your dapp can connect to the Varial mobile app.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ const provider = await UniversalProvider.init({
   projectId,
   metadata: {
     name: "My Stellar Dapp",
-    description: "A dapp that integrates with Freighter Mobile",
+    description: "A dapp that integrates with Varial",
     url: "https://my-dapp.com",
     icons: ["https://my-dapp.com/icon.png"],
   },
@@ -53,13 +53,26 @@ const modal = createAppKit({
 
 | I want to...                          | Go to                                          |
 | ------------------------------------- | ---------------------------------------------- |
-| Connect to Freighter Mobile           | [Connecting](connecting.md)                    |
+| Connect to the Varial mobile app      | [Connecting](connecting.md)                    |
 | Sign a transaction                    | [Signing](signing.md)                          |
-| Feature Freighter upfront in the modal | [Featuring Freighter](featuring-freighter.md) |
+| Feature Varial upfront in the modal   | [Featuring Varial](featuring-freighter.md)    |
 
 ## Alternatives
 
-[Stellar Wallets Kit](https://stellarwalletskit.dev/) provides a multi-wallet interface that includes WalletConnect support, but currently only supports `stellar_signXDR` and `stellar_signAndSubmitXDR`. To use all four Freighter Mobile methods — including `stellar_signMessage` and `stellar_signAuthEntry` — implement the WalletConnect integration directly as shown in this guide.
+[Stellar Wallets Kit](https://stellarwalletskit.dev/) provides a multi-wallet interface that includes WalletConnect support. From v2.3.0, its `WalletConnectModule` supports all four Varial methods:
+
+| Stellar Wallets Kit method | WalletConnect RPC method |
+| --- | --- |
+| `signTransaction()` | `stellar_signXDR` |
+| `signAndSubmitTransaction()` | `stellar_signAndSubmitXDR` |
+| `signMessage()` | `stellar_signMessage` |
+| `signAuthEntry()` | `stellar_signAuthEntry` |
+
+Use the kit if your dapp supports several Stellar wallets. Integrate WalletConnect directly, as shown in this guide, if you want full control over the session and the modal. Kit versions before v2.3.0 only support `stellar_signXDR` and `stellar_signAndSubmitXDR`.
+
+{% hint style="warning" %}
+The kit sends `stellar:pubnet` only for the Mainnet passphrase (`Networks.PUBLIC`) and `stellar:testnet` for anything else. It uses the `networkPassphrase` you pass on the call, or else the kit's network, which is Mainnet unless you set it with `init({ network })` or `setNetwork()`. Keep it in line with the network active in the Varial mobile app, or the request is rejected.
+{% endhint %}
 
 {% hint style="info" %}
 Older examples may use `@walletconnect/sign-client` directly. That approach still works, but `@walletconnect/universal-provider` is the actively documented package. For more details, see the [UniversalProvider docs](https://docs.reown.com/advanced/providers/universal) and the [AppKit modal migration guide](https://docs.reown.com/appkit/upgrade/wcm).
